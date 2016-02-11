@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :subscription do
-    user nil
-    curriculum nil
+    user rand(1..10)
+    curriculum rand(1..10)
   end
 end

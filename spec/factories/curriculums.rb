@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :curriculum do
-    title "MyString"
-    description "MyText"
-    level 1
-    user nil
-    topic nil
+    title { Faker::Hacker.noun }
+    description { Faker::Hipster.sentence }
+    level { rand(1..3) }
+    user { rand(1..10) }
+    topic { rand(1..10) }
   end
 end

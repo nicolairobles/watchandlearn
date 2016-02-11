@@ -5,3 +5,29 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'factory_girl_rails'
+
+10.times do
+  FactoryGirl.create :topic
+end
+
+10.times do
+  FactoryGirl.create :user
+end
+
+10.times do
+  FactoryGirl.create :curriculum
+end
+
+40.times do
+  FactoryGirl.create :video
+end
+
+100.times do
+  FactoryGirl.create :vote
+end
+
+10.times do
+  FactoryGirl.create :subscription
+end

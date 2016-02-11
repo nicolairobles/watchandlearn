@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :user do
-    fname "MyString"
-    lname "MyString"
-    email "MyString"
-    pw_digest "MyString"
-    image "MyString"
+    fname { Faker::Name.first_name }
+    lname { Faker::Name.last_name }
+    email { Faker::Internet.email }
+    pw_digest "12345"
+    image { Faker::Avatar.image }
   end
 end

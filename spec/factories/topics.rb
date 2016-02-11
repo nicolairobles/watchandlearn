@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :topic do
-    name "MyString"
+    name "JavaScript"
   end
 end

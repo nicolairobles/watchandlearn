@@ -1,10 +1,12 @@
+a = (1..100).to_a.shuffle
+
 FactoryGirl.define do
   factory :video do
-    urlID "MyString"
-    thumbnail "MyString"
-    order 1
-    description "MyText"
-    title "MyString"
-    curriculum nil
+    urlID { Faker::Avatar.image }
+    thumbnail { Faker::Avatar.image }
+    order a.pop
+    description { Faker::Hipster.sentence }
+    title { Faker::Hipster.sentence }
+    curriculum rand(1..10)
   end
 end
