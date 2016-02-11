@@ -23,19 +23,26 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
-  def create
+def create
     @user = User.new(user_params)
 
-    respond_to do |format|
+    def create
+      @user = User.new(user_params)    # strong param
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        flash[:success] = "Welcome to the Sample App!"
+        redirect_to @user
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+        render 'new'
     end
-  end
+
+  private
+
+    def user_params
+    # marks user parameters as required & what fields are permitted to be updated.
+      params.require(:user).permit(:name, :email, :pw_digest,
+                                   :password_confirmation)
+    end
+end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json

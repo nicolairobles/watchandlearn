@@ -1,37 +1,44 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<h1>Sign up</h1>
+<div class="row">
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="col-md-6 col-md-offset-3">
+ <!--    <div class="field"> -->
+      <%= f.label :fname %><br>
+      <%= f.text_field :fname, class: 'form-control' %><br>
+<!--     </div> -->    
+<!-- <div class="field"> -->
+      <%= f.label :lname %><br>
+      <%= f.text_field :lname, class: 'form-control' %><br>
+<!--     </div>
+    <div class="field"> -->
+      <%= f.label :email %><br>
+      <%= f.text_field :email, class: 'form-control' %><br>
+<!--     </div>
+    <div class="field"> -->
+      <%= f.label :pw_digest %><br>
+      <%= f.text_field :pw_digest, class: 'form-control'  %><br>
+
+      <%= f.label :password_confirmation, "Confirmation" %><br>
+      <%= f.password_field :password_confirmation, class: 'form-control' %><br>
+<!--     </div>
+    <div class="field"> -->
+      <%= f.label :image %><br>
+      <%= f.text_field :image, class: 'form-control'  %><br>
+ <!--    </div>
+    <div class="actions"> -->
+      <%= f.submit %>
+<!--     </div> -->
   <% end %>
-
-  <div class="field">
-    <%= f.label :fname %><br>
-    <%= f.text_field :fname %>
-  </div>
-  <div class="field">
-    <%= f.label :lname %><br>
-    <%= f.text_field :lname %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :pw_digest %><br>
-    <%= f.text_field :pw_digest %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
