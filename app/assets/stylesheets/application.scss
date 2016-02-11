@@ -10,6 +10,20 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+ (from Marina): deleted the = after the * below, since this is an scss file now
+ * require_tree .
+ * require_self
  */
+
+ // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/* do we need the scaffolds import below?*/
+@import 'scaffolds';
+@import 'topics';
+@import 'users';
+@import 'curriculums';
+@import 'videos';
+@import 'votes';
+@import 'subscriptions';
+

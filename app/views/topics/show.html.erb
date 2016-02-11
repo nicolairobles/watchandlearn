@@ -1,9 +1,39 @@
+<%= form_tag '', :method => :get do %>
+  <%= text_field_tag :value_one %>
+  <%= text_field_tag :value_two %>
+  <%= submit_tag 'Filter' %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @topic.name %>
-</p>
+<h1>Curriculums in <%= @topic.name %></h1>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Rating</th>
+      <th>Description</th>
+      <th>Level</th>
+      <th>User</th>
+      <th>Topic</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @curriculums.each do |curriculum| %>
+      <tr>
+        <td><%= link_to curriculum.title, curriculum %></td>
+        <td><%= @rating %></td>
+        <td><%= curriculum.description %></td>
+        <td><%= curriculum.level %></td>
+        <td><img src="<%= curriculum.user.image %>" width="50"></td>
+        <td><%= curriculum.topic.name %>   </td>
+        <td><%= link_to 'Edit', edit_curriculum_path(curriculum) %></td>
+        <td><%= link_to 'Destroy', curriculum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
