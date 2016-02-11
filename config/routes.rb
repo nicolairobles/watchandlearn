@@ -5,12 +5,6 @@ Rails.application.routes.draw do
   resources :curriculums
   resources :topics
   resources :users
-  root 'home#index'
+  root 'topics#index'
 
-  resources :subscriptions
-  resources :votes
-  resources :videos
-  resources :curriculums
-  resources :topics
-  resources :users
  end

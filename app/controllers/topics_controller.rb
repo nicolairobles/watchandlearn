@@ -10,6 +10,12 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+      @curriculums = Curriculum.find_by(topic_id:params["id"])
+    # @curriculums.each do |curriculum|
+    #   @votes = Vote.where("curriculum_id=#{curriculum.id}")
+    #   @rating = @votes.sum(:value)
+    #   binding.pry
+    # end
   end
 
   # GET /topics/new
