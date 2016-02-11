@@ -24,13 +24,12 @@
   <tbody>
     <% @curriculums.each do |curriculum| %>
       <tr>
-        <td><%= curriculum.title %></td>
+        <td><%= link_to curriculum.title, curriculum %></td>
         <td><%= @rating %></td>
         <td><%= curriculum.description %></td>
         <td><%= curriculum.level %></td>
         <td><img src="<%= curriculum.user.image %>" width="50"></td>
         <td><%= curriculum.topic.name %>   </td>
-        <td><%= link_to 'Show', curriculum %></td>
         <td><%= link_to 'Edit', edit_curriculum_path(curriculum) %></td>
         <td><%= link_to 'Destroy', curriculum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -38,4 +37,3 @@
   </tbody>
 </table>
 
-<br>
