@@ -33,6 +33,7 @@ def create
         redirect_to @user
       else
         render 'new'
+      end
     end
 
   private
