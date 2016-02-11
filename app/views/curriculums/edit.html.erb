@@ -1,6 +1,68 @@
 <h1>Editing Curriculum</h1>
+<h2> Edit Videos </h2>
+<div>
+<strong>Videos:</strong>
+  <% @videos.order(:order).each do |v| %>
+  <p><%= v.order %>
+  <%= v.title %>
+  <%= link_to 'Edit', edit_video_path(v) %></p>
+  <% end %>
+</div>
 
+
+
+
+
+<h2>Add Videos to Cirriculum</h2>
+
+				<%= form_for(@video) do |v| %>
+                <% if @video.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+                    <ul>
+                    <% @video.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <div class="field">
+                  <%= v.label :urlID %><br>
+                  <%= v.text_field :urlID %>
+                </div>
+                <div class="field">
+                  <%= v.label :thumbnail %><br>
+                  <%= v.text_field :thumbnail %>
+                </div>
+                <div class="field">
+                  <%= v.label :order %><br>
+                  <%= v.number_field :order %>
+                </div>
+                <div class="field">
+                  <%= v.label :description %><br>
+                  <%= v.text_area :description %>
+                </div>
+                <div class="field">
+                  <%= v.label :title %><br>
+                  <%= v.text_field :title %>
+                </div>
+
+                <!-- <p><%= @curric_id %></p> -->
+                
+                <!-- <%= @curric_id %> -->
+                <div class="field">
+                <input type="hidden" name='curriculum_id' value=<%=@curric_id%>>
+                </div>
+                <div class="actions">
+
+                  <%= v.submit %>
+                </div>
+              <% end %>
+<h2>Edit Cirriculum </h2>
 <%= render 'form' %>
+
 
 <%= link_to 'Show', @curriculum %> |
 <%= link_to 'Back', curriculums_path %>

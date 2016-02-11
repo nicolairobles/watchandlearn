@@ -10,6 +10,7 @@ class CurriculumsController < ApplicationController
   # GET /curriculums/1
   # GET /curriculums/1.json
   def show
+    @videos = Video.where(:curriculum_id => Curriculum.find(params[:id]))
   end
 
   # GET /curriculums/new
@@ -19,7 +20,10 @@ class CurriculumsController < ApplicationController
 
   # GET /curriculums/1/edit
   def edit
-  end
+    @videos = Video.all
+    @video = Video.new
+    @curric_id = params['id']
+  end 
 
   # POST /curriculums
   # POST /curriculums.json

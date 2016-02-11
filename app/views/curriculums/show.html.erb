@@ -25,5 +25,14 @@
   <%= @curriculum.topic %>
 </p>
 
+<div>
+<strong>Videos:</strong>
+  <% @videos.order(:order).each do |v| %>
+  <p><%= v.order %>
+  <%= v.title %></p>
+  <% end %>
+</div>
+
+
 <%= link_to 'Edit', edit_curriculum_path(@curriculum) %> |
 <%= link_to 'Back', curriculums_path %>
