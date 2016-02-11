@@ -1,3 +1,11 @@
+<%= form_tag('/curriculums', remote: true) do %>
+  <%= select_tag(:option, options_for_select([['Javascript', 1], ['Ruby', 2], ['Python', 3]], selected: :option )) %>
+  <%= select_tag(:option, options_for_select([['Beginner', 1], ['Intermediate', 2], ['Advanced', 3]], selected: :option )) %>
+  <%= submit_tag 'Filter' %>
+<% end %>
+
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Curriculums</h1>
@@ -6,6 +14,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Rating</th>
       <th>Description</th>
       <th>Level</th>
       <th>User</th>
@@ -17,9 +26,22 @@
   <tbody>
     <% @curriculums.each do |curriculum| %>
       <tr>
-        <td><%= curriculum.title %></td>
+
+        <td><%= link_to curriculum.title, curriculum, remote: true %></td>
+
+        <% @votes = Vote.where("curriculum_id=#{curriculum.id}") %> 
+        <% @rating = @votes.sum(:value)  %> 
+
+        <td><%= @rating %></td>
         <td><%= curriculum.description %></td>
-        <td><%= curriculum.level %></td>
+        <td <%if curriculum.level.to_i == 1 %> 
+              class = "one"
+              <%elsif curriculum.level.to_i == 2 %> 
+              class = "two"
+              <%elsif curriculum.level.to_i == 3 %> 
+              class = "two"
+              <%end%> 
+        ><%= curriculum.level %></td>
         <td><%= curriculum.user %></td>
         <td><%= curriculum.topic %></td>
         <td><%= link_to 'Show', curriculum %></td>
