@@ -1,9 +1,8 @@
 <%= form_tag('/curriculums', remote: true) do %>
-  <%= select_tag(:option, options_for_select([['Javascript', 1], ['Ruby', 2], ['Python', 3]], selected: :option )) %>
-  <%= select_tag(:option, options_for_select([['Beginner', 1], ['Intermediate', 2], ['Advanced', 3]], selected: :option )) %>
+  <%= select_tag(:option, options_for_select([['Javascript', 1,{:class => "javaScript"}], ['Ruby', 2,{:class => "ruby"}], ['Python', 3, {:class => "Phyton"}]], selected: :option ),{ :class => 'topic' }) %>
+  <%= select_tag(:option, options_for_select([['Beginner', 1, {:class => "beginner"}], ['Intermediate', 2, {:class => "intermediate"}], ['Advanced', 3, {:class => "advanced"}]], selected: :option ), { :class => 'level' }) %>
   <%= submit_tag 'Filter' %>
 <% end %>
-
 
 
 <p id="notice"><%= notice %></p>
@@ -39,8 +38,8 @@
               <%elsif curriculum.level.to_i == 2 %> 
               class = "two"
               <%elsif curriculum.level.to_i == 3 %> 
-              class = "two"
-              <%end%> 
+              class = "three"
+              <%end%>
         ><%= curriculum.level %></td>
         <td><%= curriculum.user %></td>
         <td><%= curriculum.topic %></td>
