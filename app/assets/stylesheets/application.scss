@@ -27,3 +27,14 @@
 @import 'votes';
 @import 'subscriptions';
 
+.navbar{
+    margin-bottom: 0;
+}
+
+#logo{
+    width: 50px;
+    background: url(logo.png);
+    background-size: cover;
+}
+
+
