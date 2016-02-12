@@ -1,18 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
-
-
-
-
-#nicolai
-$('select[name="dropdown"]').change ->
-  if $(this).val() == '2'
-    alert 'call the do something function on option 2'
-
-#jared
-`$(document).ready(function() {
+//jared
+$(document).ready(function() {
   console.log('script loaded');
   
   $(".addvideobutton").click(function () {
@@ -31,10 +18,11 @@ $('select[name="dropdown"]').change ->
   	setTimeout(function() {
   	console.log("created_video");
   	$(':input').val('');
+  	$('.form_submit').val("addvideobutton");
   	}, 1000);
   	
 
   });
-});`
+});
   
   
