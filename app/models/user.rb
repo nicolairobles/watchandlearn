@@ -24,5 +24,11 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   
+  def encrypt_password
+    if password_digest.present?
+      self.password_digest_salt = BCrypt::Engine.generate_salt
+      self.password_digest_hash = BCrypt::Engine.hash_secret(password, password_salt)
+    end
+  end
 
 end
