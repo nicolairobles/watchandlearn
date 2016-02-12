@@ -24,14 +24,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-
     @user = User.new(user_params)    # strong param
-      if @user.save
-        flash[:success] = "Welcome to the Sample App!"
-        redirect_to @user
-      else
-        render 'new'
-      end
+    if @user.save
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @user
+    else
+      render 'new'
     end
 
   private
