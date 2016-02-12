@@ -1,11 +1,13 @@
 
 <strong>Videos:</strong>
-  <% @videos.order(:order).each do |v| %>
+  <% videos.each do |v| %>
+ 
   
-    <p><%= v.description%>
+
+    <p><%= v.description%>	
     <%= v.title %>
     <%= link_to 'Edit', edit_video_path(v) %></p>
-    
+   
   <% end %>
   
 

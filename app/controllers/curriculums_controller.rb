@@ -24,8 +24,8 @@ class CurriculumsController < ApplicationController
   def edit
     @videos = Video.where(:curriculum_id => Curriculum.find(params[:id]))
     @video = Video.new
-    @curric_id = params['id']
-  
+    @curric_id = params[:id]
+    
   end 
 
   # POST /curriculums

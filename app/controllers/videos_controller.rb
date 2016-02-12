@@ -26,8 +26,7 @@ class VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
-   
-    @videos = Video.all
+    #@videos = Video.where(:curriculum_id => params[:curriculum_id]))
     @video = Video.new(video_params)
     @video.curriculum_id = params[:curriculum_id]
     @curric = Curriculum.find(params[:curriculum_id])
