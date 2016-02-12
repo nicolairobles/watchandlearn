@@ -23,11 +23,9 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
-def create
-    @user = User.new(user_params)
+  def create
 
-    def create
-      @user = User.new(user_params)    # strong param
+    @user = User.new(user_params)    # strong param
       if @user.save
         flash[:success] = "Welcome to the Sample App!"
         redirect_to @user
@@ -40,10 +38,9 @@ def create
 
     def user_params
     # marks user parameters as required & what fields are permitted to be updated.
-      params.require(:user).permit(:name, :email, :pw_digest,
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :pw_digest, :password_confirmation)
     end
-end
+  end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
