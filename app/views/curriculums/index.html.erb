@@ -1,10 +1,31 @@
+<!-- Dropdowns to select "Topic" and "Level" -->
 <%= form_tag('/curriculums', remote: true) do %>
-  <%= select_tag(:option, options_for_select([['Javascript', 1,{:class => "javaScript"}], ['Ruby', 2,{:class => "ruby"}], ['Python', 3, {:class => "Phyton"}]], selected: :option ),{ :class => 'topic' }) %>
-  <%= select_tag(:option, options_for_select([['Beginner', 1, {:class => "beginner"}], ['Intermediate', 2, {:class => "intermediate"}], ['Advanced', 3, {:class => "advanced"}]], selected: :option ), { :class => 'level' }) %>
-  <%= submit_tag 'Filter' %>
-<% end %>
+
+  <!-- Topic Dropdown -->
+    <%= select_tag(:topic, options_for_select(
+      [
+        ['Topic', 0], 
+        ['Javascript', 1,{:class => "javaScript"}], 
+        ['Ruby', 2,{:class => "ruby"}], 
+        ['Python', 3, {:class => "Phyton"}]
+      ], selected: :topic ),
+      { :id => 'topic' }) %>
+
+  <!-- Level Dropdown -->
+    <%= select_tag(:level, options_for_select(
+      [
+        ['Level', 0], 
+        ['Beginner', 1, {:class => "beginner"}], 
+        ['Intermediate', 2, {:class => "intermediate"}], 
+        ['Advanced', 3, {:class => "advanced"}]
+      ], selected: :level ), 
+      { :id => 'level' }) %>
+
+  <% end %>
 
 
+
+<!-- Curriculum Table Display -->
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Curriculums</h1>
@@ -22,27 +43,22 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id = "curriculums">
     <% @curriculums.each do |curriculum| %>
-      <tr>
+      <tr <%if curriculum.level.to_i == 1 %> 
+              class = "level one <%= curriculum.topic.name %> "
+              <%elsif curriculum.level.to_i == 2 %> 
+              class = "level two <%= curriculum.topic.name %>"
+              <%elsif curriculum.level.to_i == 3 %> 
+              class = "level three <%= curriculum.topic.name %>"
+          <%end%>>
 
         <td><%= link_to curriculum.title, curriculum, remote: true %></td>
-
-        <% @votes = Vote.where("curriculum_id=#{curriculum.id}") %> 
-        <% @rating = @votes.sum(:value)  %> 
-
-        <td><%= @rating %></td>
+        <td><%= curriculum.rating %></td>
         <td><%= curriculum.description %></td>
-        <td <%if curriculum.level.to_i == 1 %> 
-              class = "one"
-              <%elsif curriculum.level.to_i == 2 %> 
-              class = "two"
-              <%elsif curriculum.level.to_i == 3 %> 
-              class = "three"
-              <%end%>
-        ><%= curriculum.level %></td>
-        <td><%= curriculum.user %></td>
-        <td><%= curriculum.topic %></td>
+        <td><%= curriculum.level %></td>
+        <td><%= curriculum.user.fname + " " + curriculum.user.lname%></td>
+        <td><%= curriculum.topic.name %></td>
         <td><%= link_to 'Show', curriculum %></td>
         <td><%= link_to 'Edit', edit_curriculum_path(curriculum) %></td>
         <td><%= link_to 'Destroy', curriculum, method: :delete, data: { confirm: 'Are you sure?' } %></td>

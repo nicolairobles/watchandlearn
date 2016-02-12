@@ -24,10 +24,10 @@ end
   FactoryGirl.create :video
 end
 
-10.times do
-  FactoryGirl.create :subscription
-end
-
 100.times do
   FactoryGirl.create :vote
+end
+
+10.times do
+  FactoryGirl.create :subscription
 end

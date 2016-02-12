@@ -28,8 +28,13 @@
 <div>
 <strong>Videos:</strong>
   <% @videos.order(:order).each do |v| %>
-  <p><%= v.order %>
-  <%= v.title %></p>
+    <p><%= v.order %>
+    <%= v.title %></p>
+    <% v.urlID = v.urlID.split("=")[1] %>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
+    </iframe>
+  
   <% end %>
 </div>
 

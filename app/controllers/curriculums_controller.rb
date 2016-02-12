@@ -5,6 +5,12 @@ class CurriculumsController < ApplicationController
   # GET /curriculums.json
   def index
     @curriculums = Curriculum.all
+    @curriculums.each do |curriculum|
+      @votes = Vote.where("curriculum_id=#{curriculum.id}")
+      @rating = @votes.sum(:value)
+      curriculum.update(rating: @rating)
+    end
+    @curriculums = @curriculums.order(rating: :desc)
   end
 
   # GET /curriculums/1
