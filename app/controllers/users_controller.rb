@@ -36,10 +36,12 @@ class UsersController < ApplicationController
   # end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      session[:user_id] = user.id
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome to the Sample App!"
       redirect_to '/'
+      # redirect_to @user???
     else
       redirect_to '/users/new'
     end
@@ -77,7 +79,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:fname, :lname, :email, :password_digest, :password_confirmation, :image)
+      params.require(:user).permit(:fname, :lname, :email, :password, :password_confirmation, :image)
     end
 
 end
