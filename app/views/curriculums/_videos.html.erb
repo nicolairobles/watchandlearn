@@ -1,0 +1,14 @@
+
+<strong>Videos:</strong>
+  <% videos.each do |v| %>
+ 
+  
+
+    <p><%= v.description%>	
+    <%= v.title %>
+    <%= link_to 'Edit', edit_video_path(v) %></p>
+   
+  <% end %>
+  
+
+
