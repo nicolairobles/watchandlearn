@@ -14,15 +14,9 @@ $(document).ready(function() {
     }
   });
 
-  $(".form_submit").click(function () {
-  	setTimeout(function() {
-  	console.log("created_video");
-  	$(':input').val('');
-  	$('.form_submit').val("addvideobutton");
-  	}, 1000);
-  	
+
 
   });
-});
+
   
   

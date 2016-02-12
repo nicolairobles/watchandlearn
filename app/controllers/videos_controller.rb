@@ -28,11 +28,13 @@ class VideosController < ApplicationController
 
     @video = Video.new(video_params)
     @video.curriculum_id = params[:curriculum_id]
-
+    @curric = Curriculum.find(params[:curriculum_id])
     respond_to do |format|
       if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
+        format.html { redirect_to @curric, notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
+        format.js
+
       else
         format.html { render :new }
         format.json { render json: @video.errors, status: :unprocessable_entity }

@@ -1,0 +1,10 @@
+<div class="videos">
+<strong>Videos:</strong>
+  <% @videos.order(:order).each do |v| %>
+    <% if v.curriculum_id == @curriculum.id %>
+    <p><%= v.order %>
+    <%= v.title %>
+    <%= link_to 'Edit', edit_video_path(v) %></p>
+  <% end %>
+  <% end %>
+</div>
