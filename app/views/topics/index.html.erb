@@ -1,16 +1,23 @@
 <h1>Watch'n'Learn</h1>
 
 <div class="topics dropdown">
+
+  <!-- Featured Dropdown -->
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Topics
     <span class="caret"></span>
   </button>
+
+  <!-- Topics Dropdown List -->
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
-      <% @topics.each do |topic| %>
-        <li><a href="/topics/<%= topic.id %>"><%= topic.name %></a></li>
-      <% end %>
-
+    <% @topics.each do |topic| %>
+      <li><a href="/topics/<%= topic.id %>"><%= topic.name %></a></li>
+    <% end %>
   </ul>
+
+
+
+
+
 </div>
 
