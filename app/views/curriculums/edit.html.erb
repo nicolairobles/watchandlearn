@@ -3,19 +3,22 @@
 <div>
 <strong>Videos:</strong>
   <% @videos.order(:order).each do |v| %>
-  <p><%= v.order %>
-  <%= v.title %>
-  <%= link_to 'Edit', edit_video_path(v) %></p>
+  	<% if v.curriculum_id == @curriculum.id %>
+	  <p><%= v.order %>
+	  <%= v.title %>
+	  <%= link_to 'Edit', edit_video_path(v) %></p>
+	<% end %>
   <% end %>
 </div>
 
 
 
+<button class="addvideobutton">Add Videos to Cirriculum</button>
+<div class="addvideo">
 
 
-<h2>Add Videos to Cirriculum</h2>
-
-				<%= form_for(@video) do |v| %>
+				<div class="addvideoform">
+				<%= form_for(@video, :remote => true, :html => {:'data-type' => 'json'}) do |v| %>
                 <% if @video.errors.any? %>
                   <div id="error_explanation">
                     <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
@@ -57,9 +60,11 @@
                 </div>
                 <div class="actions">
 
-                  <%= v.submit %>
+                  <%= v.submit 'addvideobutton', :class => "form_submit" %>
                 </div>
               <% end %>
+              </div>
+</div>
 <h2>Edit Cirriculum </h2>
 <%= render 'form' %>
 
