@@ -1,6 +1,6 @@
 <%= form_tag('/curriculums', remote: true) do %>
-  <%= select_tag(:option, options_for_select([['Javascript', 1,{:class => "javaScript"}], ['Ruby', 2,{:class => "ruby"}], ['Python', 3, {:class => "Phyton"}]], selected: :option ),{ :class => 'topic' }) %>
-  <%= select_tag(:option, options_for_select([['Beginner', 1, {:class => "beginner"}], ['Intermediate', 2, {:class => "intermediate"}], ['Advanced', 3, {:class => "advanced"}]], selected: :option ), { :class => 'level' }) %>
+  <%= select_tag(:topic, options_for_select([['Javascript', 1,{:class => "javaScript"}], ['Ruby', 2,{:class => "ruby"}], ['Python', 3, {:class => "Phyton"}]], selected: :topic ),{ :class => 'topic' }) %>
+  <%= select_tag(:level, options_for_select([['Beginner', 1, {:class => "beginner"}], ['Intermediate', 2, {:class => "intermediate"}], ['Advanced', 3, {:class => "advanced"}]], selected: :level ), { :class => 'level' }) %>
   <%= submit_tag 'Filter' %>
 <% end %>
 
