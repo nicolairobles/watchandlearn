@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   #   @password = Password.create(new_password)
   #   self.password_hash = @password
   # end
-  has_secure_password
+
+  # has_secure_password
   before_save { self.email = email.downcase }
   has_many :curriculums
   has_many :votes
@@ -24,11 +25,19 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   
-  def encrypt_password
-    if password_digest.present?
-      self.password_digest_salt = BCrypt::Engine.generate_salt
-      self.password_digest = BCrypt::Engine.hash_secret(password_digest, password_digest_salt)
-    end
+  def password=(password)
+    self.password_digest = BCrypt::Password.create(password)
   end
+
+  def is_password?(password)
+    BCrypt::Password.new(self.password_digest) == password
+  end
+  
+  # def encrypt_password
+  #   if password_digest.present?
+  #     self.password_digest_salt = BCrypt::Engine.generate_salt
+  #     self.password_digest = BCrypt::Engine.hash_secret(password_digest, password_digest_salt)
+  #   end
+  # end
 
 end
