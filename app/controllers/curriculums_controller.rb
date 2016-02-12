@@ -1,6 +1,7 @@
 class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
 
+
   # GET /curriculums
   # GET /curriculums.json
   def index
@@ -11,6 +12,7 @@ class CurriculumsController < ApplicationController
   # GET /curriculums/1.json
   def show
     @videos = Video.where(:curriculum_id => Curriculum.find(params[:id]))
+    # binding.pry
   end
 
   # GET /curriculums/new
@@ -20,9 +22,10 @@ class CurriculumsController < ApplicationController
 
   # GET /curriculums/1/edit
   def edit
-    @videos = Video.all
+    @videos = Video.where(:curriculum_id => Curriculum.find(params[:id]))
     @video = Video.new
     @curric_id = params['id']
+  
   end 
 
   # POST /curriculums

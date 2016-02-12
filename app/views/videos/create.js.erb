@@ -19,8 +19,12 @@
   });
 
 
-$(".videos").html("<%= escape_javascript(render('videos', format: 'html', :item => @videos)) %>")
-$(".addvideoform").html("<%= escape_javascript(render('form', format: 'html')) %>")
+$(".videos").html("<%= escape_javascript(render('/curriculums/videos', :videos => @videos)) %>")
+
+// $(".addvideoform").html("<%= escape_javascript(render('form', format: 'html')) %>")
 
 
+
+// , collection: @comments, as: comment
 // locals: {videos: @videos}
+ //format: 'html', :item => @videos)) 

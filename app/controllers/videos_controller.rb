@@ -19,13 +19,15 @@ class VideosController < ApplicationController
 
   # GET /videos/1/edit
   def edit
+    @videos = Video.all
+    @curric = Curriculum.find(params[:curriculum_id])
   end
 
   # POST /videos
   # POST /videos.json
   def create
    
-
+    @videos = Video.all
     @video = Video.new(video_params)
     @video.curriculum_id = params[:curriculum_id]
     @curric = Curriculum.find(params[:curriculum_id])
@@ -40,6 +42,7 @@ class VideosController < ApplicationController
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /videos/1
