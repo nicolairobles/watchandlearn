@@ -23,20 +23,25 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
+  # def create
+  #   @user = User.new(user_params)    # strong param
+  #   if @user.save
+  #     flash[:success] = "Welcome to the Sample App!"
+  #     redirect_to @user
+  #   else
+  #     render 'new'
+  #   end
+
+
+  # end
+
   def create
-    @user = User.new(user_params)    # strong param
-    if @user.save
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+    user = User.new(user_params)
+    if user.save
+      session[:user_id] = user.id
+      redirect_to '/'
     else
-      render 'new'
-    end
-
-  private
-
-    def user_params
-    # marks user parameters as required & what fields are permitted to be updated.
-      params.require(:user).permit(:name, :email, :pw_digest, :password_confirmation)
+      redirect_to '/users/new'
     end
   end
 
@@ -72,6 +77,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:fname, :lname, :email, :pw_digest, :image)
+      params.require(:user).permit(:fname, :lname, :email, :password_digest, :password_confirmation, :image)
     end
+
 end

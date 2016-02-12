@@ -28,11 +28,12 @@
       <%= f.text_field :email, class: 'form-control' %><br>
 <!--     </div>
     <div class="field"> -->
-      <%= f.label :pw_digest %><br>
-      <%= f.text_field :pw_digest, class: 'form-control'  %><br>
+      <%= f.label :password_digest %><br>
+      <%= f.password_field :password_digest, class: 'form-control'  %><br>
 
       <%= f.label :password_confirmation, "Confirmation" %><br>
       <%= f.password_field :password_confirmation, class: 'form-control' %><br>
+      <input type='text' name='authenticity_token' value='<%=form_authenticity_token()%>'>
 <!--     </div>
     <div class="field"> -->
       <%= f.label :image %><br>
