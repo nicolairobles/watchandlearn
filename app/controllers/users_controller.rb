@@ -38,6 +38,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      # prevent login prompt
+      log_in @user
       session[:user_id] = @user.id
       flash[:success] = "Welcome to the Sample App!"
       redirect_to '/'
