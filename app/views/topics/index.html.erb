@@ -9,7 +9,7 @@
   </button>
 
   <!-- Topics Dropdown List -->
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+  <ul class="topics dropdown dropdown-menu" aria-labelledby="dropdownMenu1">
     <% @topics.each do |topic| %>
       <li><a href="/topics/<%= topic.id %>"><%= topic.name %></a></li>
     <% end %>
