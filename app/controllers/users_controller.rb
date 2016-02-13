@@ -44,6 +44,7 @@ class UsersController < ApplicationController
       # redirect_to user profile, (user_url(@user)), which rails infers from @user here
       redirect_to @user
     else
+      flash[:danger] = "Errors! Try again"
       redirect_to '/users/new'
     end
   end
