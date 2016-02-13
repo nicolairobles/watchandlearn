@@ -1,10 +1,61 @@
+<%= javascript_tag defer: 'defer' do -%>
+  $(document).ready(function() {
+  console.log('topics js loaded');
+
+  // Logic to Hide/Show LEVEL Selected
+  $('#level').on('change', function() {
+    console.log(this.value); 
+    if (this.value === "0") {
+      console.log("level selected")
+      $(".one").show();
+      $(".two").show();
+      $(".three").show();
+    } else if (this.value === "1") {
+      console.log("beginner selected")
+      $(".one").show();
+      $(".two").hide();
+      $(".three").hide();
+    } else if (this.value === "2"){
+      console.log("intermediate selected");
+      $(".two").show();
+      $(".one").hide();
+      $(".three").hide();
+    } else if (this.value === "3"){
+      console.log("advanced selected");
+      $(".three").show();
+      $(".one").hide();
+      $(".two").hide();
+    }
+  });
+
+  // Logic to Hide/Show TOPIC Selected
+  $('#topic').on('change', function() {
+    console.log(this.value); 
+    if (this.value === "0") {
+      console.log("topic selected");
+      $(".curriculum").show();
+    } 
+<%@topics.each do |topic| %> 
+    else if (this.value === "<%= topic.id %>" ) {
+      $(".curriculum").hide();
+      $(".<%=topic.name%> ").show();
+    } 
+<%end%> 
+  });
+
+
+
+
+});
+<% end -%>
+
 <!-- Dropdowns to select "Topic" and "Level" -->
 <%= form_tag('/curriculums', remote: true) do %>
 
   <!-- Topic Dropdown -->
     <%= select_tag(:topic, options_for_select(
       [
-        ['Topic', 0], 
+        ['All Topics', 0], 
         ['Javascript', 1,{:class => "javaScript"}], 
         ['Ruby', 2,{:class => "ruby"}], 
         ['Python', 3, {:class => "Phyton"}]
@@ -14,7 +65,7 @@
   <!-- Level Dropdown -->
     <%= select_tag(:level, options_for_select(
       [
-        ['Level', 0], 
+        ['All Levels', 0], 
         ['Beginner', 1, {:class => "beginner"}], 
         ['Intermediate', 2, {:class => "intermediate"}], 
         ['Advanced', 3, {:class => "advanced"}]
@@ -22,8 +73,6 @@
       { :id => 'level' }) %>
 
   <% end %>
-
-
 
 <!-- Curriculum Table Display -->
 <p id="notice"><%= notice %></p>
@@ -46,11 +95,11 @@
   <tbody id = "curriculums">
     <% @curriculums.each do |curriculum| %>
       <tr <%if curriculum.level.to_i == 1 %> 
-              class = "level one <%= curriculum.topic.name %> "
+              class = "curriculum one <%= curriculum.topic.name %> "
               <%elsif curriculum.level.to_i == 2 %> 
-              class = "level two <%= curriculum.topic.name %>"
+              class = "curriculum two <%= curriculum.topic.name %>"
               <%elsif curriculum.level.to_i == 3 %> 
-              class = "level three <%= curriculum.topic.name %>"
+              class = "curriculum three <%= curriculum.topic.name %>"
           <%end%>>
 
         <td><%= link_to curriculum.title, curriculum %></td>
@@ -66,59 +115,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-
-<!-- 
-
-
-
-
-
-
-<%= link_to 'New Curriculum', new_curriculum_path %>
-
-
-
-
-<%= form_tag '', :method => :get do %>
-  <%= text_field_tag :value_one %>
-  <%= text_field_tag :value_two %>
-  <%= submit_tag 'Filter' %>
-<% end %>
-
-<p id="notice"><%= notice %></p>
-
-<h1>Curriculums in <%= @topic.name %></h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Rating</th>
-      <th>Description</th>
-      <th>Level</th>
-      <th>User</th>
-      <th>Topic</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @curriculums.each do |curriculum| %>
-      <tr>
-        <td><%= link_to curriculum.title, curriculum %></td>
-        <td><%= @rating %></td>
-        <td><%= curriculum.description %></td>
-        <td><%= curriculum.level %></td>
-        <td><img src="<%= curriculum.user.image %>" width="50"></td>
-        <td><%= curriculum.topic.name %>   </td>
-        <td><%= link_to 'Edit', edit_curriculum_path(curriculum) %></td>
-        <td><%= link_to 'Destroy', curriculum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
- -->
