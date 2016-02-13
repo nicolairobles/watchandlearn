@@ -19,6 +19,16 @@
 </p>
 
 <p>
+  <strong>Votes:</strong>
+  <%= @votes[0].value %>
+
+</p>
+  <button id='vote_up' class="vote_button">+1</button>
+  <button class="vote_down vote_button">-1</button>
+  <%= csrf_meta_tag %>
+
+
+<p>
   <strong>Description:</strong>
   <%= @video.description %>
 </p>

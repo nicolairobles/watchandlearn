@@ -29,7 +29,9 @@
 <strong>Videos:</strong>
   <% @videos.order(:order).each do |v| %>
     <p><%= v.order %>
+     <%= link_to v.title, v %>
     <%= v.title %></p>
+
    
     <% v.urlID = v.urlID.split("=")[1] %>
 
