@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :topics
   resources :users
   get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
+  post 'loggedin' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
  end

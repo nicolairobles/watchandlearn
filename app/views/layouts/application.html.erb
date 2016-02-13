@@ -12,8 +12,6 @@
     <%= link_to "yoututorial", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
         <% if logged_in? %>
           <li><%= link_to "Users", '#' %></li>
           <li><%= link_to "Profile", current_user %></li>
@@ -24,10 +22,12 @@
         <% end %>
       </ul>
     </nav>
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
   </div>
 </header>
-
-
+<%= debug(params) %>
 <%= yield %>
 
 </body>
