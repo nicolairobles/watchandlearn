@@ -21,21 +21,10 @@
     </div>
   </h1>
 
-<table id = "curriculums" class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Rating</th>
-      <th>Description</th>
-      <th>Level</th>
-      <th>User</th>
-      <th>Topic</th>
-    </tr>
-  </thead>
 
-  <tbody>
+  <div class="curric-list">
     <% @curriculums.each do |curriculum| %>
-      <tr <%if curriculum.level.to_i == 1 %> 
+      <div <%if curriculum.level.to_i == 1 %> 
               class = "curriculum one <%= curriculum.topic.name %> "
               <%elsif curriculum.level.to_i == 2 %> 
               class = "curriculum two <%= curriculum.topic.name %>"
@@ -43,13 +32,25 @@
               class = "curriculum three <%= curriculum.topic.name %>"
           <%end%>>
 
-        <td><%= link_to curriculum.title, curriculum %></td>
-        <td><%= curriculum.rating %></td>
-        <td><%= curriculum.description %></td>
-        <td><%= curriculum.level %></td>
-        <td><img src="<%= curriculum.user.image %>" width="50"></td>
-        <td><%= curriculum.topic.name %></td>
-      </tr>
+
+        <div class="row">
+          <div class="col-md-2">
+          <!-- image of first video thumbnail -->
+            <img class="thumbnail" src="https://s.ytimg.com/yts/img/yt_1200-vfl4C3T0K.png" width="100">
+          </div>
+          <div class="col-md-5">
+            Title: <%= link_to curriculum.title, curriculum %><br />
+            Creator: <img src="<%= curriculum.user.image %>" width="30"><%= curriculum.user.fname %><br />
+            Number of Videos: <%= curriculum.videos.length %>
+          </div>
+          <div class="col-md-5">
+            Number of Upvotes: <%= curriculum.rating %><br />
+            Level: <%= curriculum.level %><br />
+          </div>
+        </div>
+        
+      </div>
     <% end %>
-  </tbody>
+  </div>
+
 </table>

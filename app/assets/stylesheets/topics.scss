@@ -8,9 +8,8 @@ h1 {
     text-align: center;
 }
 
+// topics index page
 .topics{
-    // position: absolute;
-    // left: 50%;
     list-style-type: none;
     width: 100%;
 }
@@ -29,4 +28,23 @@ h1 {
 .topics ul li{
     text-align: center;
 }
+
+// topics show page
+.curric-list {
+    width: 70%;
+    margin-left: 25%;
+    margin-top: 20px;
+}
+
+.curric-list div.row{
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 15px 10px 0 10px;
+    margin: 15px;
+}
+
+.curric-list div.row img.thumbnail{
+    border: solid 1px grey;
+}
+
 
