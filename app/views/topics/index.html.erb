@@ -8,22 +8,17 @@
 
 <div class="topics dropdown">
 
-  <!-- Featured Dropdown -->
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Topics
-    <span class="caret"></span>
-  </button>
-
-  <!-- Topics Dropdown List -->
-  <ul class="topics dropdown dropdown-menu" id="homebrowser" aria-labelledby="dropdownMenu1">
-    <% @topics.each do |topic| %>
-      <li><a href="/topics/<%= topic.id %>"><%= topic.name %></a></li>
-    <% end %>
-  </ul>
-
-
-
-
+    <li class="dropdown">
+      <button class="browse btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Topics
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+          <% @topics.each do |topic| %>
+            <li><a href="/topics/<%= topic.id %>"><%= topic.name %></a></li>
+          <% end %>
+      </ul>
+    </li>
 
 </div>
 
