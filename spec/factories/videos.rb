@@ -7,6 +7,6 @@ FactoryGirl.define do
     order { a.pop }
     description { Faker::Hipster.sentence }
     title { Faker::Hipster.sentence }
-    curriculum_id { rand(2..10) }
+    curriculum_id { rand(2..100) }
   end
 end

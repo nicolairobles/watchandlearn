@@ -25,11 +25,10 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Rating</th>
-      <th>Description</th>
+      <th>Creator</th>
       <th>Level</th>
-      <th>User</th>
-      <th>Topic</th>
+      <th>Rating</th>
+      <th>Video Count</th>
     </tr>
   </thead>
 
@@ -44,11 +43,16 @@
           <%end%>>
 
         <td><%= link_to curriculum.title, curriculum %></td>
+        <td><%= link_to curriculum.user.fname+" "+curriculum.user.lname, curriculum %></td>
+        <td><%if curriculum.level.to_i == 1 %> 
+              Beginner
+              <%elsif curriculum.level.to_i == 2 %> 
+              Intermediate
+              <%elsif curriculum.level.to_i == 3 %> 
+              Advanced
+          <%end%></td>
         <td><%= curriculum.rating %></td>
-        <td><%= curriculum.description %></td>
-        <td><%= curriculum.level %></td>
-        <td><img src="<%= curriculum.user.image %>" width="50"></td>
-        <td><%= curriculum.topic.name %></td>
+        <td><%= curriculum.videocount %></td>
       </tr>
     <% end %>
   </tbody>

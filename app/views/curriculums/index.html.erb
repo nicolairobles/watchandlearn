@@ -1,18 +1,18 @@
-<!-- Dropdowns to select "Topic" and "Level" -->
+<!-- Dropdowns to select "Topic" and "Level" --><!-- 
 <%= form_tag('/curriculums', remote: true) do %>
-
+ -->
   <!-- Topic Dropdown -->
-    <%= select_tag(:topic, options_for_select(
+<!--     <%= select_tag(:topic, options_for_select(
       [
         ['Topic', 0], 
         ['Javascript', 1,{:class => "javaScript"}], 
         ['Ruby', 2,{:class => "ruby"}], 
         ['Python', 3, {:class => "Phyton"}]
       ], selected: :topic ),
-      { :id => 'topic' }) %>
+      { :id => 'topic' }) %> -->
 
   <!-- Level Dropdown -->
-    <%= select_tag(:level, options_for_select(
+<!--     <%= select_tag(:level, options_for_select(
       [
         ['Level', 0], 
         ['Beginner', 1, {:class => "beginner"}], 
@@ -23,9 +23,9 @@
 
   <% end %>
 
+ -->
 
-
-<!-- Curriculum Table Display -->
+<!-- Curriculum Table Display --><!-- 
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Curriculums</h1>
@@ -61,3 +61,4 @@
 <br>
 
 <%= link_to 'New Curriculum', new_curriculum_path %>
+ -->

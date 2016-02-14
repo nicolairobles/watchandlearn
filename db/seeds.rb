@@ -20,7 +20,7 @@ end
   FactoryGirl.create :curriculum
 end
 
-40.times do
+1000.times do
   FactoryGirl.create :video
 end
 

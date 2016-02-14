@@ -13,7 +13,12 @@ class TopicsController < ApplicationController
     @topics = Topic.all
     @id = params[:id]
     @curriculums = Curriculum.where("topic_id = #{@id}")
+    
     @curriculums.each do |curriculum|
+      @videos = Video.where("curriculum_id=#{curriculum.id}")
+      @num_videos_per_curric = @videos.count
+      curriculum.update(videocount: @num_videos_per_curric)
+      # @total_time = 
       @votes = Vote.where("curriculum_id=#{curriculum.id}")
       @rating = @votes.sum(:value)
       curriculum.update(rating: @rating)
