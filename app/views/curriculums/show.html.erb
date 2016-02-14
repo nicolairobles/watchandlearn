@@ -1,40 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @curriculum.title %>
-</p>
+      <p>
+        <strong>Title:</strong>
+        <%= @curriculum.title %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @curriculum.description %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @curriculum.description %>
+      </p>
 
-<p>
-  <strong>Level:</strong>
-  <%= @curriculum.level %>
-</p>
+      <p>
+        <strong>Level:</strong>
+        <% if @curriculum.level == 1 %>
+          Beginner
+        <% elsif @curriculum.level == 2 %>
+          Intermediate
+        <% elsif @curriculum.level == 3 %>
+          Advanced
+        <% end %>
+      </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @curriculum.user %>
-</p>
+      <p>
+        <strong>Creator:</strong>
+        <%= link_to "#{@curriculum.user.fname} #{@curriculum.user.lname}", @curriculum.user %>
+      </p>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @curriculum.topic %>
-</p>
+      <p>
+        <strong>Topic:</strong>
+        <%= @curriculum.topic.name %>
+      </p>
 
-<div>
+      <div>
+
+
 <strong>Videos:</strong>
   <% @videos.order(:order).each do |v| %>
-    <p><%= v.order %>
-    <%= v.title %></p>
-   
-    <% v.urlID = v.urlID.split("=")[1] %>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
-    </iframe>
+    <div class="videolist">
+        <p><%= v.order %>
+        <%= v.title %></p>
+       
+        <% v.urlID = v.urlID.split("=")[1] %>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
   
   <% end %>
 </div>
