@@ -38,14 +38,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # prevent login prompt
+      # log in after account creation
       log_in @user
       flash[:success] = "Welcome to the Sample App!"
       # redirect_to user profile, (user_url(@user)), which rails infers from @user here
       redirect_to @user
     else
       flash[:danger] = "Errors! Try again"
-      redirect_to '/users/new'
+      format.html {render :new}
+      #redirect_to '/users/new'
     end
   end
 

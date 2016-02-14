@@ -2,32 +2,35 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
   <%= form_for(@user) do |f| %>
- <!--    <div class="field"> -->
-      <%= render 'shared/error_messages' %>
+    <div class="message">
+      <%= render './shared/error_messages' %>
+    </div>
+    <div class="field">
       <%= f.label :fname %><br>
       <%= f.text_field :fname, class: 'form-control' %><br>
-<!--     </div> -->    
-<!-- <div class="field"> -->
+    </div>    
+    <div class="field">
       <%= f.label :lname %><br>
       <%= f.text_field :lname, class: 'form-control' %><br>
-<!--     </div>
-    <div class="field"> -->
+    </div>
+    <div class="field">
       <%= f.label :email %><br>
       <%= f.email_field :email, class: 'form-control' %><br>
-<!--     </div>
-    <div class="field"> -->
+    </div>
+    <div class="field">
       <%= f.label :password %><br>
       <%= f.password_field :password, class: 'form-control'  %><br>
-
+    </div>
+    <div class="field">
       <%= f.label :password_confirmation, "Confirmation" %><br>
       <%= f.password_field :password_confirmation, class: 'form-control' %><br>
       <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token()%>'>
-<!--     </div>
-    <div class="field"> -->
+    </div>
+    <div class="field">
       <%= f.label :image %><br>
       <%= f.text_field :image, class: 'form-control'  %><br>
- <!--    </div>
-    <div class="actions"> -->
+    </div>
+    <div class="actions">
       <%= f.submit %>
-<!--     </div> -->
+    </div>
   <% end %>
