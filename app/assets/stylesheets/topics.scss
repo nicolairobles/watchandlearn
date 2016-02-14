@@ -8,13 +8,25 @@ h1 {
     text-align: center;
 }
 
-#homebrowser{
+.topics{
+    // position: absolute;
+    // left: 50%;
+    list-style-type: none;
+    width: 100%;
+}
+
+.topics button{
+    position: relative;
+    left: 25%;
     width: 50%;
-    /* Set the margin-left and margin-right automatically set */
-    margin: 0 auto; 
+}
+
+.topics ul{
+    margin-left: 25%;
+    width: 50%;
+}
+
+.topics ul li{
     text-align: center;
 }
 
-ul#homebrowser {
-  margin-left: 128px;
-}
