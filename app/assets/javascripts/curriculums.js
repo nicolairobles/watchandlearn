@@ -15,6 +15,13 @@ $(document).ready(function() {
     }
   });
 
+  // $("#curriculums").dataTable({
+  //       "scrollY":        "90px",
+  //       "scrollCollapse": true,
+  //       "paging":         false,
+  //   });
+
+
 
 
 
