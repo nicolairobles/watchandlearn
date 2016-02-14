@@ -19,5 +19,11 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  # Requires user to be logged in - can be used in other controllers with this syntax:
+  #   before_action :require_user, only: [:index, :show]
+  def require_user 
+    redirect_to '/login' unless current_user 
+  end
 end
 
