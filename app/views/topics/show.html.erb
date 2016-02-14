@@ -3,25 +3,16 @@
 
   <h1><%= @topic.name %> Curriculums
     <div class="level">
-      
-    <!-- Dropdowns to select "Level" -->
-    <%= form_tag('/curriculums', remote: true) do %>
-
-      <!-- Level Dropdown -->
-        <%= select_tag(:level, options_for_select(
-          [
-            ['All Levels', 0], 
-            ['Beginner', 1, {:class => "beginner"}], 
-            ['Intermediate', 2, {:class => "intermediate"}], 
-            ['Advanced', 3, {:class => "advanced"}]
-          ], selected: :level ), 
-          { :id => 'level' }) %>
-
-      <% end %>
+      <select id="#filter">
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
     </div>
   </h1>
 
-<table id = "curriculums" class="table">
+
+<table id="curriculums" class="table">
   <thead>
     <tr>
       <th>Title</th>

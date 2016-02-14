@@ -3,8 +3,19 @@ $(document).ready(function() {
 
   $("#curriculums").dataTable({
     "pageLength" : 5,
-    "sDom": '<"top">rt<"bottom"p><"clear">',
-    "ordering": false
+    // "sDom": '<"top">rt<"bottom"p><"clear">',
+    "ordering": false,
+    "sPaginationType": "full_numbers",
+    "bFilter": true,
+    "sDom":"rtp" // default is lfrtip, where the f is the filter
+  });
+
+  var table = $("#curriculums").DataTable();
+  $("#filter").on("change", function() {
+    console.log(this.value);
+    // console.log("works")
+    // //filter by selected value on second column
+    // table.column(0).search($(this).val()).draw();
   });
 
   // Logic to Hide/Show LEVEL Selected

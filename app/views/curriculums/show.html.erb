@@ -12,17 +12,23 @@
 
 <p>
   <strong>Level:</strong>
-  <%= @curriculum.level %>
+  <%if @curriculum.level.to_i == 1 %> 
+    Beginner
+    <%elsif @curriculum.level.to_i == 2 %> 
+    Intermediate
+    <%elsif @curriculum.level.to_i == 3 %> 
+    Advanced
+  <%end%>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @curriculum.user %>
+  <%= @curriculum.user.fname + " " + @curriculum.user.lname %>
 </p>
 
 <p>
   <strong>Topic:</strong>
-  <%= @curriculum.topic %>
+  <%= @curriculum.topic.name%>
 </p>
 
 <div>
