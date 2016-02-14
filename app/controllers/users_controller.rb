@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -22,27 +23,17 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
-  # def create
-  #   @user = User.new(user_params)    # strong param
-  #   if @user.save
-  #     flash[:success] = "Welcome to the Sample App!"
-  #     redirect_to @user
-  #   else
-  #     render 'new'
-  #   end
-
-
-  # end
-
+  # POST /users.json (need to double check if this is implemented for JSON - MR)
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      # prevent login prompt
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to '/'
-      # redirect_to @user???
+      # redirect_to user profile, (user_url(@user)), which rails infers from @user here
+      redirect_to @user
     else
+      flash[:danger] = "Errors! Try again"
       redirect_to '/users/new'
     end
   end

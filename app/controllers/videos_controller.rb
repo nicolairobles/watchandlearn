@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /videos
   # GET /videos.json
@@ -19,25 +20,29 @@ class VideosController < ApplicationController
 
   # GET /videos/1/edit
   def edit
+    @videos = Video.all
+    @curric = Curriculum.find(params[:curriculum_id])
   end
 
   # POST /videos
   # POST /videos.json
   def create
-   
-
+    #@videos = Video.where(:curriculum_id => params[:curriculum_id]))
     @video = Video.new(video_params)
     @video.curriculum_id = params[:curriculum_id]
-
+    @curric = Curriculum.find(params[:curriculum_id])
     respond_to do |format|
       if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
+        format.html { redirect_to @curric, notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
+        format.js
+
       else
         format.html { render :new }
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /videos/1

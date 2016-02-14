@@ -38,10 +38,19 @@
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Login</a></li>
-        <li><a href="/users/new">Signup</a></li>
+        <% if logged_in? %>
+          <li><%= link_to "Profile", current_user %></li>
+          <li><%= link_to "Settings", '#' %></li>
+          <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+          <li><a href="/users/new">Signup</a></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
+        <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
   </div><!-- /.container-fluid -->
 </nav>
 

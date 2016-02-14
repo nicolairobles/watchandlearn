@@ -1,10 +1,11 @@
-// Nicolai
 $(document).ready(function() {
-  console.log('script loaded');
+  console.log('topics js loaded');
 
-  // Grab topic selected and pass it to results page
-
-
+  $("#curriculums").dataTable({
+    "pageLength" : 5,
+    "sDom": '<"top">rt<"bottom"p><"clear">',
+    "ordering": false
+  });
 
   // Logic to Hide/Show LEVEL Selected
   $('#level').on('change', function() {
@@ -31,27 +32,5 @@ $(document).ready(function() {
       $(".two").hide();
     }
   });
-
-  // Logic to Hide/Show TOPIC Selected
-  $('#topic').on('change', function() {
-    console.log(this.value); 
-    if (this.value === "0") {
-      console.log("topic selected")
-      $(".javascript").show();
-      $(".ruby").show();
-      $(".python").show();
-    } else if (this.value === "1") {
-      console.log("javascript selected")
-      $(".javascript").show();
-    }
-    if (this.value === "2") {
-      console.log("ruby selected")
-      $(".ruby").show();
-    }
-    if (this.value === "3") {
-      console.log("python selected")
-      $(".python").show();
-    }
-  });
-
+    
 });
