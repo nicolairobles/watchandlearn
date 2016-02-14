@@ -8,7 +8,7 @@
 
 require 'factory_girl_rails'
 
-10.times do
+3.times do
   FactoryGirl.create :topic
 end
 
@@ -16,7 +16,7 @@ end
   FactoryGirl.create :user
 end
 
-10.times do
+100.times do
   FactoryGirl.create :curriculum
 end
 
@@ -24,7 +24,7 @@ end
   FactoryGirl.create :video
 end
 
-100.times do
+1000.times do
   FactoryGirl.create :vote
 end
 

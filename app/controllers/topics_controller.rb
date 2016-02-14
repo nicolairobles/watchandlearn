@@ -11,7 +11,8 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topics = Topic.all
-    @curriculums = Curriculum.all
+    @id = params[:id]
+    @curriculums = Curriculum.where("topic_id = #{@id}")
     @curriculums.each do |curriculum|
       @votes = Vote.where("curriculum_id=#{curriculum.id}")
       @rating = @votes.sum(:value)
