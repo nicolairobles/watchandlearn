@@ -32,15 +32,11 @@
               <% end %>
           </ul>
         </li>
-        <li><a href="/curriculums">Curriculums</a></li>
-        <li><a href="/videos">Videos</a></li>
-        <li><a href="/users">Users</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li><%= link_to "Profile", current_user %></li>
-          <li><%= link_to "Settings", '#' %></li>
           <li><%= link_to "Log out", logout_path, method: "delete" %></li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
