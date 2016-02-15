@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Fname:</strong>
-  <%= @user.fname %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Lname:</strong>
-  <%= @user.lname %>
-</p>
+  <div class="top">
+    <h2><%= @user.fname %> <%= @user.lname %></h2>
+    <%= image_tag @user.image, class: 'style_image'  %>
+    <button class= "user_button" >Subscribe!</button>
+    <button class= "right_button user_button" >Contact!</button>
+    <button class= "email user_button button_right" >@user.email</button>
+  </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<h2>Curriculums</h2>
+<% @curriculums.each do |c| %>
+  <% level = "beginner" if c.level == 1 %>
+  <% level = "intermediate" if c.level == 2 %>
+  <% level = "advanced" if c.level == 3 %>
 
-<p>
-  <strong>Pw digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @user.image %>
-</p>
+  <a href="/curriculums/<%=c.id%>">
+    <div class="curriculum">
+      <h3><%= c.title.capitalize %></h3>
+      <!-- <%= c.user_id %><%= @user.id%> --> 
+      <p><%=c.description%></p>
+      <p>Difficulty: <%= level.capitalize %></p>
+    </div>
+  </a>
+ 
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</div>
