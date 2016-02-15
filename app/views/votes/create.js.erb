@@ -1,1 +1,1 @@
-create.js.erb
+$(".votes").html("<%= escape_javascript(render partial: 'votes', locals: { votes: @votes } ) %>");

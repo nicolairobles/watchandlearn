@@ -24,28 +24,28 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
+
+    user_votes = Vote.where(user_id: 7, video_id: params[:id])
     @vote = Vote.new(vote_params)
-    #if params["value"] == "1"
-    # binding.pry
+
       @vote.value = params['value']
       @vote.curriculum_id = params["curriculum_id"]
       @vote.user_id = params["user_id"]
       @vote.video_id = params["video_id"]
       @vote.save
-      # binding.pry
-    # elsif params["value"] == "-1"
-    #   @vote.value = -1
-    #   @vote.save
-    # elsif params["value"] == "0"
-    #   @vote.value = 0
-    #   @vote.save
-
-    #end
 
     respond_to do |format|
       if @vote.save
         format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
         format.json { render :show, status: :created, location: @vote }
+        Vote.all.each do |vote|
+          if vote == Vote.all.last
+            #do nothing
+          elsif vote != Vote.all.last
+            vote.destroy
+          end
+        end
+        @vote_render = "votes go here!"
       else
         format.html { render :new }
         format.json { render json: @vote.errors, status: :unprocessable_entity }
