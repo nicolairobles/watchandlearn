@@ -18,7 +18,7 @@ class CurriculumsController < ApplicationController
   # GET /curriculums/1.json
   def show
     @videos = Video.where(:curriculum_id => Curriculum.find(params[:id]))
-    # binding.pry
+    @curriculums = Curriculum.find(params[:id])
   end
 
   # GET /curriculums/new

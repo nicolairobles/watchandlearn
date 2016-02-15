@@ -1,19 +1,22 @@
-class VideosController < ApplicationController
+class Curriculums::VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   before_action :require_user, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    @id = self.params[:curriculum_id].to_i # get curriculum_id
+    @videos = Video.where(:curriculum_id => Curriculum.find(@id))
   end
 
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @id = self.params[:curriculum_id].to_i # get curriculum_id
     @votes = Vote.where(:video_id => params[:id], :user_id => 7)
-    
-
+    @videos = Video.where(:curriculum_id => Curriculum.find(@id))
+    @videos.order(:order)
+    @curriculums = Curriculum.find(@id)
   end
 
   # GET /videos/new

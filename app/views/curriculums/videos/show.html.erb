@@ -42,7 +42,7 @@
 
 <p>
   <strong>Curriculum:</strong>
-  <%= @video.curriculum %>
+  <a href=<%="/curriculums/#{@id}"%>><%=@video.curriculum.title%></a>
 </p>
 
 <%= link_to 'Edit', edit_video_path(@video) %> |

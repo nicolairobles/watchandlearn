@@ -14,12 +14,12 @@ class TopicsController < ApplicationController
     @id = params[:id]
     @curriculums = Curriculum.where("topic_id = #{@id}")
     @curriculums.each do |curriculum|
+    # calculate curriculum ratings
       @votes = Vote.where("curriculum_id=#{curriculum.id}")
       @rating = @votes.sum(:value)
       curriculum.update(rating: @rating)
     end
     @curriculums = @curriculums.order(rating: :desc)
-    
   end
 
   # GET /topics/new
