@@ -36,15 +36,6 @@
 
 <strong>Videos:</strong>
   <% @videos.order(:order).each do |v| %>
-<<<<<<< HEAD
-=======
-    <p><%= v.order %>
-     <%= link_to v.title, v %>
-    <%= v.title %></p>
-
-   
-    <% v.urlID = v.urlID.split("=")[1] %>
->>>>>>> 06dd6d6ee4a2c4328179d8da248dafde4703c529
 
     <div class="videolist">
         <p><%= v.order %>
