@@ -6,6 +6,16 @@
 
   });
 
+$.ajax({
+      url: "https://www.googleapis.com/youtube/v3/videos?id=" + $('.url').val().split("=")[1] + "&key="+ apiKey + "&fields=items(snippet(title))&part=snippet", 
+      dataType: "jsonp",
+      success: function(data){
+               console.log(data.items[0].snippet.title);           
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+          alert (textStatus, + ' | ' + errorThrown);
+      }
+  });
 
 $(".videos").html("<%= escape_javascript(render('/curriculums/videos', :videos => @curric.videos)) %>")
 
