@@ -10,8 +10,8 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-    @votes = Vote.where(:video_id => params[:id])
-    
+    @votes = Vote.where(:video_id => params[:id], :user_id => 5)
+
   end
 
   # GET /videos/new

@@ -19,17 +19,28 @@
 </p>
 
 <p>
-  <strong>Votes:</strong>
-  <%= @votes[0].value %>
-
-</p>
   <input type="hidden" name="curric" value=<%= @video.curriculum_id %> class="curric">
   <input type="hidden" name="video" value=<%= @video.id %> class="video">
-  <input type="hidden" name="user" value="2" class="user">
-  
-  <button class="vote_button vote_up">+1</button>
-  <button class="vote_down vote_button">-1</button>
+  <input type="hidden" name="user" value="5" class="user">
+  <strong>Votes:</strong>
 
+  <% @votes.each do |vote| %>
+      <%= vote.value %>
+      <% unless vote.user_id == 5 %>
+        <button class="vote_button vote_up" value ="1">+1</button>
+        <button class="vote_down vote_button" value= "-1">-1</button>
+      <% end %>
+      <% if vote.value == 1 %>
+        <button class="vote_button vote_up" value ="0">+1</button>
+        <button class="vote_down vote_button" value= "-1">-1</button>
+      <% elsif vote.value == -1 %>
+        <button class="vote_button vote_up" value ="1">+1</button>
+        <button class="vote_down vote_button" value= "0">-1</button>
+
+
+    <% end %>
+  <% end %>
+</p>
 
 
 <p>
