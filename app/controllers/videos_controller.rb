@@ -11,8 +11,11 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-    @votes = Vote.where(:video_id => params[:id], :user_id => 7)
-    
+    if current_user
+      @votes = Vote.where(:video_id => params[:id], :user_id => current_user)
+    else 
+      redirect_to "/login"
+    end
 
   end
 

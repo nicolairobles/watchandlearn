@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+
+ user:<%= current_user.id if current_user %>
   <strong>Urlid:</strong>
-  <%= @video.urlID %>
+   <%= @video.urlID %>
 </p>
 <% @video.urlID = @video.urlID.split("=")[1] %>
 
@@ -18,16 +20,20 @@
   <%= @video.order %>
 </p>
 
+<% if current_user %>
 <p>
   <input type="hidden" name="curric" value=<%= @video.curriculum_id %> class="curric">
   <input type="hidden" name="video" value=<%= @video.id %> class="video">
-  <input type="hidden" name="user" value="7" class="user">
+  <input type="hidden" name="user" value=<%= current_user.id %> class="user">
 </p>
+
   <strong>Votes:</strong>
 
 <div class='votes'>
 <%= render partial: 'votes' %>
 </div>
+<% end %>
+
 
 
 <p>
