@@ -1,84 +1,87 @@
 <div id  = "container">
-<p id="notice"><%= notice %></p>
+  <div class = "gutter"></div>
+  <p id="notice"><%= notice %></p>
+  </div class = "row">
+    <div class = "col4">
+        <div class = "iframe">
+          <p>
+            <strong>Urlid:</strong>
+            <%= @video.urlID %>
+          </p>
 
-<div class = "iframe">
-<p>
-  <strong>Urlid:</strong>
-  <%= @video.urlID %>
-</p>
+          <p>
+            <strong>Thumbnail:</strong>
+            <%= @video.thumbnail %>
+          </p>
+
+          <p>
+            <strong>Order:</strong>
+            <%= @video.order %>
+          </p>
+
+          <p>
+            <strong>Description:</strong>
+            <%= @video.description %>
+          </p>
+
+          <p>
+            <strong>Title:</strong>
+            <%= @video.title %>
+          </p>
+
+          <p>
+            <strong>Curriculum:</strong>
+            <%= @video.curriculum_id %>
+          </p>
 
 
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @video.thumbnail %>
-</p>
+          <% counter = 0 %>
+          <% @videos.order(:order).each do |v| %>
+              <div class="videolist">
+                  <!-- first video -->
+                  <% if v.id == @video.id %>
+                      <p><%= v.order %>
+                      <%= v.title %></p>
+                      <% v.urlID = v.urlID.split("=")[1] %>
+                      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
+                      </iframe>
+                  <% end %>
+                  <% counter += 1 %>
+              </div>
+            <% end %>
+          </div>
+        <p style="clear: both"></p>
+      </div>
+    <div class = "col3"></div>
+    <div class = "col2"></div>
+    <div class = "col1"></div>
+      <div id = "sidebar">
+        <% counter = 0 %>
+        <% @curriculums.each do |c| %>
+          <% if c.id == @video.curriculum_id %>
+          <h2> Curriculum: <%= c.title.capitalize %></h2>
+         <% end %>
+         <%end %>
+        <% @videos.order(:order).each do |v| %>
 
-<p>
-  <strong>Order:</strong>
-  <%= @video.order %>
-</p>
+            <% if v.curriculum_id == @video.curriculum_id %>
+            <p>
+              <%= v.curriculum_id %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @video.description %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
-</p>
-
-<p>
-  <strong>Curriculum:</strong>
-  <%= @video.curriculum_id %>
-</p>
-
-
-  <% counter = 0 %>
-  <% @videos.order(:order).each do |v| %>
-    <div class="videolist">
-        <!-- first video -->
-        <% if v.id == @video.id %>
-            <p><%= v.order %>
-            <%= v.title %></p>
-            <% v.urlID = v.urlID.split("=")[1] %>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
-            </iframe>
+              <% if v.id == @video.id %>
+                <a href="/videos/<%= v.id %>" style="color: red"><%= v.title %></a>
+                
+              <% elsif v.id != @video.id %>
+                <a href="/videos/<%= v.id %>" style="color: black"><%= v.title %></a>
+                
+                <% end %>
+              </p>
+            <% end %>
+          
+            <% counter += 1 %>
         <% end %>
-        <% counter += 1 %>
-    </div>
-  <% end %>
-</div>
-<p style="clear: both"></p>
-
-<div id = "sidebar">
-  <% counter = 0 %>
-  <% @curriculums.each do |c| %>
-    <% if c.id == @video.curriculum_id %>
-    <h2> Curriculum: <%= c.title.capitalize %></h2>
-   <% end %>
-   <%end %>
-  <% @videos.order(:order).each do |v| %>
-
-      <% if v.curriculum_id == @video.curriculum_id %>
-      <p>
-        <%= v.curriculum_id %>
-
-        <% if v.id == @video.id %>
-          <a href="/videos/<%= v.id %>" style="color: red"><%= v.title %></a>
-          
-        <% elsif v.id != @video.id %>
-          <a href="/videos/<%= v.id %>" style="color: black"><%= v.title %></a>
-          
-          <% end %>
-        </p>
-      <% end %>
-    
-      <% counter += 1 %>
-  <% end %>
-  <%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
-</div>
-
-
+        <%= link_to 'Edit', edit_video_path(@video) %> |
+      <%= link_to 'Back', videos_path %>
+      </div>
+  </div>
 </div>
