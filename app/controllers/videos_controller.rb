@@ -16,6 +16,9 @@ class VideosController < ApplicationController
     else 
       redirect_to "/login"
     end  
+
+    @videos= Video.all
+    @curriculums = Curriculum.all
   end
 
   # GET /videos/new
