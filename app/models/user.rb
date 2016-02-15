@@ -1,14 +1,15 @@
 class User < ActiveRecord::Base
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
   has_secure_password
+
+  before_save   :downcase_email
+  before_create :create_activation_digest
 
   has_many :curriculums
   has_many :votes
   has_many :subscriptions
-
-  before_save { self.email = email.downcase }
 
   validates :fname,  presence: true
   validates :lname,  presence: true
@@ -16,8 +17,12 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  # need to allow nil for password confirmation too?
   validates :password_confirmation, presence: true
+  validate  :picture_size
+
+  mount_uploader :image, PictureUploader
   
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -43,9 +48,30 @@ class User < ActiveRecord::Base
   end
 
   # Returns true if the given token matches the digest.
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  # Converts email to all lower-case.
+  def downcase_email
+    self.email = email.downcase
+  end
+
+  # Creates and assigns the activation token and digest.
+  def create_activation_digest
+    self.activation_token  = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
+
+  private
+
+  # Validates the size of an uploaded picture.
+  def picture_size
+    if picture.size > 5.megabytes
+      errors.add(:picture, "should be less than 5MB")
+    end
   end
 
 end
