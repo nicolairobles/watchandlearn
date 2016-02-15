@@ -11,6 +11,8 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @videos= Video.all
+    @curriculums = Curriculum.all
   end
 
   # GET /videos/new

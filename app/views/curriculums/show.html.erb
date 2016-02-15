@@ -57,11 +57,12 @@
     <% if counter != 0 %>
       <p>
         <%= v.order %>
-        <a href="/videos/<%= v.id %>"><%= v.title %></a>
+        <a href="/videos/<%= v.id %>" style="color : black"><%= v.title %></a>
       </p>
-      <% v.urlID = v.urlID.split("=")[1] %>
-      </iframe>
-    <% end %>
+    <% else %>
+      <%= v.order %>
+      <a href="/videos/<%= v.id %>" style="color : red"><%= v.title %></a>
+      <% end %>
   <% counter += 1 %>
   <% end %>
 </div>
