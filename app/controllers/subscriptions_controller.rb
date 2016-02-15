@@ -16,6 +16,10 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions/new
   def new
     @subscription = Subscription.new
+    @user_id = User.where(id: 5)
+    @curriculum_id = @curriculums = Curriculum.where(user_id: params[:id])
+
+
   end
 
   # GET /subscriptions/1/edit
@@ -25,8 +29,11 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
+     @current_user ||= User.find_by(id: session[:user_id])
     @subscription = Subscription.new(subscription_params)
-
+      @subscription.user_id = params["user_id"]
+      @subscription.curriculum_id = params["curriculum_id"]
+      @subscription.save
     respond_to do |format|
       if @subscription.save
         format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
@@ -70,6 +77,6 @@ class SubscriptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscription_params
-      params.require(:subscription).permit(:user_id, :curriculum_id)
+      #params.require(:subscription).permit(:user_id, :curriculum_id)
     end
 end
