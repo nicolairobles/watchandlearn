@@ -10,9 +10,6 @@ $('.vote_button').on('click', function(){
 		console.log("vote up")
 		$(this).css("color", "blue")
 		var vote_status = 1
-		
-
-
 	} else {
 		console.log("vote down")
 		$(this).css("color", "blue")
@@ -36,7 +33,6 @@ $('.vote_button').on('click', function(){
             	console.log("you added a vote ");
             	console.log(result)
             	window.location.reload();
-
             }
         })
 	
