@@ -23,9 +23,12 @@
   <%= @votes[0].value %>
 
 </p>
-  <button id='vote_up' class="vote_button">+1</button>
+  <input type="hidden" name="curric" value=<%= @video.curriculum_id %> class="curric">
+  <input type="hidden" name="video" value=<%= @video.id %> class="video">
+  
+  <button class="vote_button vote_up">+1</button>
   <button class="vote_down vote_button">-1</button>
-  <%= csrf_meta_tag %>
+
 
 
 <p>

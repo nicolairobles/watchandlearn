@@ -25,6 +25,22 @@ class VotesController < ApplicationController
   # POST /votes.json
   def create
     @vote = Vote.new(vote_params)
+    #if params["value"] == "1"
+    # binding.pry
+      @vote.value = params['value']
+      @vote.curriculum_id = params["curriculum_id"]
+      @vote.user_id = params["user_id"]
+      @vote.video_id = params["video_id"]
+      @vote.save
+      # binding.pry
+    # elsif params["value"] == "-1"
+    #   @vote.value = -1
+    #   @vote.save
+    # elsif params["value"] == "0"
+    #   @vote.value = 0
+    #   @vote.save
+
+    #end
 
     respond_to do |format|
       if @vote.save
@@ -69,6 +85,6 @@ class VotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
-      params.require(:vote).permit(:value, :user_id, :video_id, :curriculum_id)
+       #params.require(:vote).permit(:value, :user_id, :video_id, :curriculum_id)
     end
 end

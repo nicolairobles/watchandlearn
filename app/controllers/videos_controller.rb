@@ -11,6 +11,7 @@ class VideosController < ApplicationController
   # GET /videos/1.json
   def show
     @votes = Vote.where(:video_id => params[:id])
+    
   end
 
   # GET /videos/new
