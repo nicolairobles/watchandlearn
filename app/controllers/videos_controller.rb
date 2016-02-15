@@ -15,8 +15,7 @@ class VideosController < ApplicationController
       @votes = Vote.where(:video_id => params[:id], :user_id => current_user)
     else 
       redirect_to "/login"
-    end
-
+    end  
   end
 
   # GET /videos/new
