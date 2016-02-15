@@ -31,24 +31,42 @@
         <%= @curriculum.topic.name %>
       </p>
 
-      <div>
-
-
+<div>
 <strong>Videos:</strong>
+      <!-- counter checks for first video -->
+  <% counter = 0 %>
   <% @videos.order(:order).each do |v| %>
-
     <div class="videolist">
-        <p><%= v.order %>
-        <%= v.title %></p>
-       
-        <% v.urlID = v.urlID.split("=")[1] %>
-
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
-        </iframe>
+        <!-- first video -->
+        <% if counter == 0 %>
+          <p><%= v.order %>
+          <%= v.title %></p>
+          <% v.urlID = v.urlID.split("=")[1] %>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
+          </iframe>
+        <% end %>
+        <% counter += 1 %>
     </div>
-  
   <% end %>
 </div>
+
+<!-- this div shows all other than first video -->
+<div>
+  <% counter = 0 %>
+  <% @videos.order(:order).each do |v| %>
+    <% if counter != 0 %>
+      <p>
+        <%= v.order %>
+        <a href="/videos/<%= v.id %>"><%= v.title %></a>
+      </p>
+      <% v.urlID = v.urlID.split("=")[1] %>
+      </iframe>
+    <% end %>
+  <% counter += 1 %>
+  <% end %>
+</div>
+        
+
 
 
 <%= link_to 'Edit', edit_curriculum_path(@curriculum) %> |
