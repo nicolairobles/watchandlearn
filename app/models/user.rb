@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   # need to allow nil for password confirmation too?
   validates :password_confirmation, presence: true
-  validate  :picture_size
+  validate  :image_size
 
   mount_uploader :image, PictureUploader
   
@@ -68,8 +68,8 @@ class User < ActiveRecord::Base
   private
 
   # Validates the size of an uploaded picture.
-  def picture_size
-    if picture.size > 5.megabytes
+  def image_size
+    if image.size > 5.megabytes
       errors.add(:picture, "should be less than 5MB")
     end
   end

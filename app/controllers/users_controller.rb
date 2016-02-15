@@ -6,14 +6,15 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], :per_page => 5)
   end
 
   # GET /users/1
   # GET /users/1.json
    def show
     @user = User.find(params[:id])
-    @curricula = @user.curriculums.paginate(page: params[:page], :per_page => 5, :order => 'updated_at ASC')
+    # Can add ordering via :order => '...' to pagination.
+    @curricula = @user.curriculums.paginate(page: params[:page], :per_page => 5)
   end
 
   # GET /users/new
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.account_activation(@user).deliver_now
       flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
+      redirect_to '/'
     else
       render 'new'
     end
