@@ -47,7 +47,7 @@ h2 {
 }
 
 
-.subscribe_button {
+.user_button{
 
 	-moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
 	-webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
@@ -70,13 +70,13 @@ h2 {
 	text-align: center;
 	margin: 0 auto;
 }
-.subscribe_button:hover {
+.user_button:hover {
 
 	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0688fa', endColorstr='#2dabf9',GradientType=0);
 	background-color:#0688fa;
 }
-.subscribe_button:active {
+.user_button:active {
 	position:relative;
 	top:1px;
 }
@@ -102,4 +102,9 @@ h2 {
 	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
 	color: white;
 	box-shadow: -5px 5px 5px 0px;
+}
+
+.email {
+	display: none;
+	float: right;
 }
