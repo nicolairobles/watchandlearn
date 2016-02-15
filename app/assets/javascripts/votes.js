@@ -30,7 +30,7 @@ $('.vote_button').on('click', function(){
 
             	'value' : vote_status,
             	'video_id' : $('.video').val(),
-            	'user_id' : user
+            	'user_id' : $('.user').val()
             },
             success: function(result){
             	console.log("you added a vote ");
