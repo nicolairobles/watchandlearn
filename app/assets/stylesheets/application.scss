@@ -32,6 +32,11 @@
     margin-bottom: 0;
 }
 
+.back{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 #logo{
     width: 50px;
     background: url(logo.png);
