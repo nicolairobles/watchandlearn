@@ -3,11 +3,9 @@
   <p id="notice"><%= notice %></p>
 
   <div class="top">
-    <h2><%= @user.fname %> <%= @user.lname %></h2>
-    <%= image_tag @user.image, class: 'style_image'  %>
 
-    <!-- <button class= "right_button contact user_button" >Contact!</button> -->
-    <button class= "email user_button right_button" ><%= @user.email %></button>
+    <h2><%= @user.fname %> <%= @user.lname %></h2>
+    <p class="style_image"><%= gravatar_for @user %></p>
   </div>
 
 <h2>Curriculums</h2>
@@ -40,7 +38,7 @@
                 <% end %>
               <% end %>
           <% else %>
-            Title: <%=c.title.capitalize%><br>
+            <strong>Title:</strong> <%=c.title.capitalize%><br>
             This Curriculum has no videos
           <% end %>
 
