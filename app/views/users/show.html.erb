@@ -23,9 +23,22 @@
   <% level = "beginner" if c.level == 1 %>
   <% level = "intermediate" if c.level == 2 %>
   <% level = "advanced" if c.level == 3 %>
-    <div class="curriculum">
-     <a href="/curriculums/<%=c.id%>">
-      <h3><%= c.title.capitalize %></h3>
+   <div class="curriculum">
+
+   <% if c.videos.length > 0 %>
+      <% @videos.order(:order).each do |v| %>
+          <% if v.curriculum_id == c.id %>
+            <% if v == c.videos.order(:order).first %>
+              Title: <a href="/videos/<%=v.id%>"><%=c.title.capitalize %></a><br/>
+            <% end %>
+
+        <% end %>
+      <% end %>
+  <% else %>
+    Title: <%=c.title.capitalize%><br>
+    This Curriculum has no videos
+  <% end %>
+
       <!-- <%= c.user_id %><%= @user.id%> --> 
       <p><%=c.description%></p>
       <p>Difficulty: <%= level.capitalize %></p>
