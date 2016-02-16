@@ -49,9 +49,13 @@
       <% end %>
   </div><!-- /.container-fluid -->
 </nav>
-<%= link_to "Back", :back %>
-<%= yield %>
 
+<%= yield %>
+<div class="back">
+  <% if session[:last_page] %>
+      <%= link_to "<< Back", session[:last_page] %>
+  <% end %>
+</div>
 <footer>
 </footer>
 
