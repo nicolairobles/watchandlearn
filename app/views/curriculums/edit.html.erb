@@ -19,5 +19,5 @@
 <%= render 'form' %>
 
 
-<%= link_to 'Show', @curriculum %> |
-<%= link_to 'Back', curriculums_path %>
+<a href="/videos/<%= @videos.order(:order).first.id%>"><button>Save Curriculum</button></a>
+
