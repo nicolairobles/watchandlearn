@@ -1,23 +1,35 @@
-<h1>Editing Curriculum</h1>
-<h2> Edit Videos </h2>
-<div class="videos">
+<div id  = "container">
 
-<%= render "videos", :videos => @videos %>
-</div>
+	<div id="edit-curriculum">
+		<h1>Edit Curriculum: <%= @curriculum.title %></h1>
 
+	<!-- Curriculum Edit Form -->
+			<center><%= render 'form' %></center>
+			<br /><br />
 
-
-<button class="addvideobutton">Add Videos to Cirriculum</button>
-<div class="addvideo">
-
-
+	<!-- Save curriculum button -->
+		<% if @videos.length >= 1 %>
+		    <center><a href="/videos/<%= @videos.order(:order).first.id%>"><button  class="btn-primary">Preview Curriculum</button></a></center>
+		<% end %>
+	<!-- Add More Videos Button -->
+			<br /><br /><br />
+			<center><button class="btn-primary addvideobutton">Add More Videos</button></center>
+	<!-- Add Video Form -->
+			<center><div class="addvideo">
 				<div class="addvideoform">
 				  <%= render 'video_form' %>
-        </div>
+			  </div>
+			</div></center>
+	</div>
+
+	<div id = "sidebar">
+				<h2> Current Video Lineup </h2>
+				<div class="videos">
+				<%= render "videos", :videos => @videos %>
+				</div>
+	</div>
+
 </div>
-<h2>Edit Cirriculum </h2>
-<%= render 'form' %>
 
 
-<a href="/videos/<%= @videos.order(:order).first.id%>"><button>Save Curriculum</button></a>
 

@@ -1,12 +1,8 @@
-
-<strong>Videos:</strong>
   <% videos.order(:order).each do |v| %>
  
-  
-
     <p><%= v.description%>
-    <%= v.order %>	
-    <%= v.title %>
+<!--     <%= v.order %>	 -->
+    <%= v.title.capitalize %>
     <%= link_to 'Edit', edit_video_path(v) %></p>
    
   <% end %>

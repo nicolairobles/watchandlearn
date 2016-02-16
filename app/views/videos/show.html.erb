@@ -13,7 +13,7 @@
             <% v.urlID = v.urlID.split("=")[1] %>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
             </iframe><br>
-            <%= v.title %></p>
+            Title: <%= v.title %></p>
             <%= v.description %><br>
             <p> Maker: <%= link_to v.curriculum.user.fname, v.curriculum.user %> </p>
         <% end %>
@@ -22,16 +22,16 @@
   <% end %>
    <strong>Votes:</strong>
 
-<div class='votes'>
-<%= render partial: 'votes' %>
-  <% if current_user %>
-    <p>
-      <input type="hidden" name="curric" value=<%= @video.curriculum_id %> class="curric">
-      <input type="hidden" name="video" value=<%= @video.id %> class="video">
-      <input type="hidden" name="user" value=<%= current_user.id %> class="user">
-    </p>
-    </div>
-    </div>
+  <div class='votes'>
+  <%= render partial: 'votes' %>
+    <% if current_user %>
+      <p>
+        <input type="hidden" name="curric" value=<%= @video.curriculum_id %> class="curric">
+        <input type="hidden" name="video" value=<%= @video.id %> class="video">
+        <input type="hidden" name="user" value=<%= current_user.id %> class="user">
+      </p>
+  </div>
+</div>
     <p style="clear: both"></p> 
   <% end %>
 
@@ -40,24 +40,24 @@
   <% counter = 0 %>
   <% @curriculums.each do |c| %>
     <% if c.id == @video.curriculum_id %>
-    <h2> Curriculum: <%= c.title.capitalize %></h2>
+    <h2> Curriculum Playlist: <%= c.title.capitalize %></h2>
    <% end %>
    <%end %>
   <% @videos.order(:order).each do |v| %>
 
       <% if v.curriculum_id == @video.curriculum_id %>
-      <p>
-        <%= v.curriculum_id %>
-        <%= v.order %>
+      <center><p>
+<!--         <%= v.curriculum_id %>
+        <%= v.order %> -->
 
         <% if v.id == @video.id %>
-          <a href="/videos/<%= v.id %>" style="color: red"><%= v.title %></a>
+          <a href="/videos/<%= v.id %>" style="color: white "><%= v.title.capitalize %></a>
           
         <% elsif v.id != @video.id %>
-          <a href="/videos/<%= v.id %>" style="color: black"><%= v.title %></a>
+          <a href="/videos/<%= v.id %>" style="color: black"><%= v.title.capitalize %></a>
           
           <% end %>
-        </p>
+        </p></center>
       <% end %>
     
       <% counter += 1 %>
