@@ -9,15 +9,15 @@
 
 <button class="addvideobutton">Add Videos to Cirriculum</button>
 <div class="addvideo">
-
-
-				<div class="addvideoform">
-				  <%= render 'video_form' %>
+        <div class="addvideoform">
+            <%= render 'video_form' %>
         </div>
 </div>
 <h2>Edit Cirriculum </h2>
 <%= render 'form' %>
 
 
-<a href="/videos/<%= @videos.order(:order).first.id%>"><button>Save Curriculum</button></a>
+<% if @videos.length >= 1 %>
+    <a href="/videos/<%= @videos.order(:order).first.id%>"><button>Save Curriculum</button></a>
+<% end %>
 
