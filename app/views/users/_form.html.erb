@@ -1,33 +1,49 @@
 <h1>Sign up</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  <%= form_for(@user) do |f| %>
- <!--    <div class="field"> -->
-      <%= render './shared/error_messages' %>
-      <%= f.label :fname %><br>
-      <%= f.text_field :fname, class: 'form-control' %><br>
-<!--     </div> -->    
-<!-- <div class="field"> -->
-      <%= f.label :lname %><br>
-      <%= f.text_field :lname, class: 'form-control' %><br>
-<!--     </div>
-    <div class="field"> -->
-      <%= f.label :email %><br>
-      <%= f.email_field :email, class: 'form-control' %><br>
-<!--     </div>
-    <div class="field"> -->
-      <%= f.label :password %><br>
-      <%= f.password_field :password, class: 'form-control'  %><br>
-
-      <%= f.label :password_confirmation, "Confirmation" %><br>
-      <%= f.password_field :password_confirmation, class: 'form-control' %><br>
-      <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token()%>'>
-<!--     </div>
-    <div class="field"> -->
-      <%= f.label :image %><br>
-      <%= f.text_field :image, class: 'form-control'  %><br>
- <!--    </div>
-    <div class="actions"> -->
-      <%= f.submit %>
-<!--     </div> -->
-  <% end %>
+    <%= form_for(@user) do |f| %>
+      <div class = "field">
+        <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <div class="alert alert-danger">
+                The form contains <%= pluralize(@user.errors.count, "error") %>.
+              </div>
+              <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+      </div>
+      <div class="field">
+        <%= f.label :fname %><br>
+        <%= f.text_field :fname, class: 'form-control' %><br>
+      </div>   
+      <div class="field">
+        <%= f.label :lname %><br>
+        <%= f.text_field :lname, class: 'form-control' %><br>
+      </div>
+      <div class="field">
+        <%= f.label :email %><br>
+        <%= f.email_field :email, class: 'form-control' %><br>
+      </div>
+      <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password, class: 'form-control'  %><br>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirmation" %><br>
+        <%= f.password_field :password_confirmation, class: 'form-control' %><br>
+        <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token()%>'>
+      </div>
+      <div class="field">
+        <%= f.label :image %><br>
+        <%= f.text_field :image, class: 'form-control'  %><br>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

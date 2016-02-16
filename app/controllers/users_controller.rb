@@ -35,12 +35,12 @@ class UsersController < ApplicationController
     if @user.save
       # prevent login prompt
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to your video tutorial dashboard!"
       # redirect_to user profile, (user_url(@user)), which rails infers from @user here
       redirect_to @user
     else
-      flash[:danger] = "Errors! Try again"
-      redirect_to '/users/new'
+      # flash[:danger] = "Errors! Try again"
+      render 'new'
     end
   end
 
