@@ -28,14 +28,17 @@
       <p><%=c.description%></p>
       <p>Difficulty: <%= level.capitalize %></p>
        </a>
-           <% if @user.id == @current_user.id %>
-        <a href="/curriculums/<%= c.id %>">Edit</a>
+      <% if @user.id == @current_user.id %>
+        <a href="/curriculums/<%= c.id %>/edit">Edit</a>
+      <% else %>
+        <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
+        <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
+        <button class= "user_button subscribe_button" >Subscribe!</button>
       <% end %>
+
     </div>
  
-  <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
-  <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
-    <button class= "user_button subscribe_button" >Subscribe!</button>
+
  
 <% end %>
 
