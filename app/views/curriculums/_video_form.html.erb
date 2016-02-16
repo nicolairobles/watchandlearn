@@ -1,3 +1,4 @@
+<br />
 <%= form_for(@video, :remote => true, :html => { :id => 'video_form' }) do |v| %>
                 <% if @video.errors.any? %>
                   <div id="error_explanation">
@@ -40,6 +41,6 @@
                 </div>
                 <div class="actions">
 
-                  <%= v.submit 'addvideobutton', :class => "form_submit" %>
+                  <%= v.submit 'addvideobutton', :class => "form_submit btn-primary" %>
                 </div>
               <% end %>
