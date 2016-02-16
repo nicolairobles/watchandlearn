@@ -32,7 +32,8 @@ class CurriculumsController < ApplicationController
     @videos = Video.where(:curriculum_id => Curriculum.find(params[:id]))
     @video = Video.new
     @curric_id = params[:id]
-    
+    # for sidebar
+    # @curriculum = Curriculum.where(id = params[:id])
   end 
 
   # POST /curriculums

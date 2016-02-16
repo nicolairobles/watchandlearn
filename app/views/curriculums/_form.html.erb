@@ -31,9 +31,7 @@
     <%= f.collection_select :topic, @topics, :id, :name, include_blank: false %>
   </div>
         
-                
-
   <div class="submit_new_curric">
-    <%= f.submit %>
+    <%= f.submit "Update Curriculum Details", :class => 'btn-primary'%>
   </div>
 <% end %>
