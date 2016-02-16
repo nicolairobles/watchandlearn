@@ -11,11 +11,11 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-    if current_user
-      @votes = Vote.where(:video_id => params[:id], :user_id => current_user)
-    else 
-      redirect_to "/login"
-    end  
+    # if current_user
+    @votes = Vote.where(:video_id => params[:id], :user_id => current_user)
+    # else 
+    #   redirect_to "/login"
+    # end  
 
     @videos= Video.all
     @curriculums = Curriculum.all

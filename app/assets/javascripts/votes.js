@@ -18,7 +18,7 @@ $('.vote_button').on('click', function(){
 	}
 
 	// if ($(this).hasClass('vote_up')){
-			$.ajax({
+		$.ajax({
             url: '/votes',
             type: 'POST',  
             data: {
@@ -36,19 +36,6 @@ $('.vote_button').on('click', function(){
             }
         })
 	
+    });
 
-	// } else {
-	// 	$.ajax({
- //            url: '/votes',
- //            type: 'POST',
- //          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},    
- //            data: {value: vote_status},
- //            success: function(result){
- //            	console.log("you added a vote")
- //            }
- //        })
-	// }
-
-
-})
 })
