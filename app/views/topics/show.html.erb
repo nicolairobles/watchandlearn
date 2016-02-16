@@ -46,7 +46,7 @@
             <%else%> 
             <a href="/curriculums/<%=curriculum.id%>/videos/<%=@first_video.id%>"%> 
             <%end%> 
-            <%=curriculum.title%></a>
+            <%=curriculum.title%></a><br />
             Creator: <img src="<%= curriculum.user.image %>" width="30"><%= curriculum.user.fname %><br />
             Number of Videos: <%= curriculum.videos.length %>
           </div>
