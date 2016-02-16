@@ -3,8 +3,12 @@
   <p id="notice"><%= notice %></p>
 
   <div class="top">
-    <h2><%= @user.fname %> <%= @user.lname %></h2>
-    <%= image_tag @user.image, class: 'style_image'  %>
+    <div class="name">
+      <h2><%= @user.fname %> <%= @user.lname %></h2>
+    </div>
+    <div class="gravatar">
+      <%= gravatar_for @user %>
+    </div>  
     
     
     <button class= "user_button" >Subscribe!</button>
