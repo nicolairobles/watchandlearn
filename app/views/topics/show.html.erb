@@ -1,7 +1,7 @@
 <!-- Curriculum Table Display -->
 <p id="notice"><%= notice %></p>
 
-  <h1><%= @topic.name %> Curriculums
+  <h1 style="font-family:'Lora'; font-size: 35px; letter-spacing: 3px"><%= @topic.name.upcase %> CURRICULUMS
     <div class="level">
       
     <!-- Dropdowns to select "Level" -->
@@ -31,8 +31,6 @@
               <%elsif curriculum.level.to_i == 3 %> 
               class = "curriculum three <%= curriculum.topic.name %>"
           <%end%>>
-
-
         <div class="row">
           <div class="col-md-2">
           <!-- image of first video thumbnail -->
@@ -60,5 +58,3 @@
       </div>
     <% end %>
   </div>
-
-</table>
