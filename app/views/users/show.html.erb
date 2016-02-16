@@ -5,9 +5,8 @@
   <div class="top">
     <h2><%= @user.fname %> <%= @user.lname %></h2>
     <%= image_tag @user.image, class: 'style_image'  %>
-    
-    <button class= "user_button" >Subscribe!</button>
-    <button class= "right_button contact right_button user_button" >Contact!</button>
+
+    <!-- <button class= "right_button contact user_button" >Contact!</button> -->
     <button class= "email user_button right_button" ><%= @user.email %></button>
   </div>
 
