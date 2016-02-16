@@ -59,6 +59,7 @@
       <% if v.curriculum_id == @video.curriculum_id %>
       <p>
         <%= v.curriculum_id %>
+        <%= v.order %>
 
         <% if v.id == @video.id %>
           <a href="/videos/<%= v.id %>" style="color: red"><%= v.title %></a>
