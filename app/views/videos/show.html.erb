@@ -1,19 +1,9 @@
 <div id  = "container">
+
 <p id="notice"><%= notice %></p>
 
 <div class = "iframe">
 <p>
-
-
-
-
-
-
-
-
-
-
-
 
   <% counter = 0 %>
   <% @videos.order(:order).each do |v| %>
@@ -25,7 +15,8 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
             </iframe><br>
             <%= v.title %></p>
-            <%= v.description %>
+            <%= v.description %><br>
+            <p> Maker: <%= link_to v.curriculum.user.fname, v.curriculum.user %> </p>
         <% end %>
         <% counter += 1 %>
     </div>

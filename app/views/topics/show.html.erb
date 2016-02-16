@@ -40,7 +40,7 @@
           </div>
           <div class="col-md-5">
             Title: <%= link_to curriculum.title, curriculum %><br />
-            Creator: <img src="<%= curriculum.user.image %>" width="30"><%= curriculum.user.fname %><br />
+            Creator: <img src="<%= curriculum.user.image %>" width="30"><%= link_to curriculum.user.fname, curriculum.user %><br />
             Number of Videos: <%= curriculum.videos.length %>
           </div>
           <div class="col-md-5">
