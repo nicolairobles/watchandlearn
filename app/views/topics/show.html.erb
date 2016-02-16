@@ -42,12 +42,17 @@
           </div>
           <div class="col-md-5">
               
-              <% @videos.order(:order).each do |v| %>
-                <% if v.curriculum_id == curriculum.id %>
-                    <% if v == curriculum.videos.sort_by {|i| i.order}.first %>
-                        Title: <a href="/videos/<%=v.id%>"><%=curriculum.title.capitalize %></a><br/>
-                    <% end %>
+              <% if curriculum.videos.length > 0 %>
+                <% @videos.order(:order).each do |v| %>
+                  <% if v.curriculum_id == curriculum.id %>
+                      <% if v == curriculum.videos.sort_by {|i| i.order}.first %>
+                          Title: <a href="/videos/<%=v.id%>"><%=curriculum.title.capitalize %></a><br/>
+                      <% end %>
+                  <% end %>
                 <% end %>
+              <% else %>
+                Title: <%=curriculum.title.capitalize%><br>
+                This Curriculum has no videos
               <% end %>
 
             
