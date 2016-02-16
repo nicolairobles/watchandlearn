@@ -13,8 +13,10 @@
   </div>
 
 <h2>Curriculums</h2>
-<% if @user.id == @current_user.id %>
-  <a href= "/curriculums/new"><button class="user_button new_curric">Create a Curriculum</button></a>
+<% if @current_user %>
+  <% if @user.id == @current_user.id %>
+    <a href= "/curriculums/new"><button class="user_button new_curric">Create a Curriculum</button></a>
+  <% end %>
 <% end %>
 
 <% @curriculums.each do |c| %>
@@ -28,12 +30,14 @@
       <p><%=c.description%></p>
       <p>Difficulty: <%= level.capitalize %></p>
        </a>
-      <% if @user.id == @current_user.id %>
-        <a href="/curriculums/<%= c.id %>/edit">Edit</a>
-      <% else %>
-        <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
-        <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
-        <button class= "user_button subscribe_button" >Subscribe!</button>
+      <% if @current_user %>
+        <% if @user.id == @current_user.id %>
+          <a href="/curriculums/<%= c.id %>/edit">Edit</a>
+        <% else %>
+          <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
+          <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
+          <button class= "user_button subscribe_button" >Subscribe!</button>
+        <% end %>
       <% end %>
 
     </div>
@@ -42,21 +46,22 @@
  
 <% end %>
 
-<% if @current_user.id == @user.id %>
-<h2> Subscriptions </h2>
-<% @subscriptions.each do |s| %>
-  <% if s.user_id == @user.id %>
-  <a href="/subscriptions/<%=s.id%>">
-    <div class="curriculum">
-      <h3><%= s.user_id%></h3>
-   
-      <p><%=s.curriculum_id%></p>
-    </div>
-  </a>
-  <% end %>
+<% if @current_user %>
+  <% if @current_user.id == @user.id %>
+  <h2> Subscriptions </h2>
+  <% @subscriptions.each do |s| %>
+    <% if s.user_id == @user.id %>
+    <a href="/subscriptions/<%=s.id%>">
+      <div class="curriculum">
+        <h3><%= s.user_id%></h3>
+     
+        <p><%=s.curriculum_id%></p>
+      </div>
+    </a>
+    <% end %>
 
- 
-<% end %>
+  <% end %>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
