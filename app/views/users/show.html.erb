@@ -48,15 +48,6 @@
             <strong>Creator:</strong> <img src="<%= c.user.image %>" width="30"><%= c.user.fname %><br />
             <strong>Number of Videos:</strong> <%= c.videos.length %><br />
             <strong>Description:</strong> <%= c.description %><br />
-            <% if @current_user %>
-              <% if @user.id == @current_user.id %>
-                <a href="/curriculums/<%= c.id %>/edit">Edit</a>
-              <% else %>
-                <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
-                <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
-                <button class= "user_button subscribe_button" >Subscribe!</button>
-              <% end %>
-            <% end %>
           </div>
           <div class="col-md-5">
             <strong>Number of Upvotes:</strong> <%= c.rating %><br />
@@ -67,7 +58,16 @@
             <%elsif c.level.to_i == 3 %>
             Advanced
             <%end %> 
-            <br />
+            <br /><br />
+            <% if @current_user %>
+              <% if @user.id == @current_user.id %>
+                <a href="/curriculums/<%= c.id %>/edit">Edit</a>
+              <% else %>
+                <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
+                <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
+                <button class= "user_button subscribe_button" >Subscribe!</button>
+              <% end %>
+            <% end %>
           </div>
         </div>
 <% end %>
