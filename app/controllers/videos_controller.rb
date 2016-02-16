@@ -29,7 +29,7 @@ class VideosController < ApplicationController
   # GET /videos/1/edit
   def edit
     @videos = Video.all
-    @curric = Curriculum.find(params[:curriculum_id])
+    # @curric = Curriculum.find(params[:curriculum_id])
   end
 
   # POST /videos
