@@ -8,11 +8,15 @@
     
     
     <button class= "user_button" >Subscribe!</button>
-    <button class= "right_button user_button" >Contact!</button>
-    <button class= "email user_button button_right" >@user.email</button>
+    <button class= "right_button contact right_button user_button" >Contact!</button>
+    <button class= "email user_button right_button" ><%= @user.email %></button>
   </div>
 
 <h2>Curriculums</h2>
+<% if @user.id == @current_user.id %>
+  <a href= "/curriculums/new"><button class="user_button new_curric">Create a Curriculum</button></a>
+<% end %>
+
 <% @curriculums.each do |c| %>
   <% level = "beginner" if c.level == 1 %>
   <% level = "intermediate" if c.level == 2 %>
