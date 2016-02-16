@@ -87,22 +87,19 @@ h2 {
 }
 
 .curriculum {
-	padding-left: 10px;
-	padding-top: 10px;
-	padding-bottom: 20px;
-	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-	border-radius: 38px;
-	margin-bottom: 20px;
-	
 	color: black;
 	text-align: center;
-	border: 1px solid black;
+
 }
 .curriculum:hover {
 	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
 	color: white;
 	box-shadow: -5px 5px 5px 0px;
 }
+
+.curric-list div.row{
+		border-radius: 0px;
+	}
 
 .email {
 	display: none;

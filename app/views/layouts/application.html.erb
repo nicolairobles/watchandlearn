@@ -19,11 +19,13 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" id="logo" href="/"></a>
+      <a class="navbar-brand" id = "brandname" href="/"> Watch - N - Learn</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+
+      <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Topics <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -32,9 +34,6 @@
               <% end %>
           </ul>
         </li>
-
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li><%= link_to "Profile", current_user %></li>
           <li><%= link_to "Log out", logout_path, method: "delete" %></li>
