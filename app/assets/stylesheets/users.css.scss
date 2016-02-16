@@ -33,7 +33,7 @@ a{
 }
 
 a:hover {
-	color: blue;
+	color: white;
 	text-decoration: none;	
 }
 
@@ -112,4 +112,9 @@ h2 {
 .new_curric {
 	display: block;
 	text-align: center;
+	margin-bottom: 20px;
+}
+
+.subscribe_button {
+	display: block;
 }
