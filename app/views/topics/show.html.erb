@@ -54,9 +54,7 @@
                 Title: <%=curriculum.title.capitalize%><br>
                 This Curriculum has no videos
               <% end %>
-
-            
-            Creator: <img src="<%= curriculum.user.image %>" width="30"><%= curriculum.user.fname %><br />
+            Maker: <img src="<%= curriculum.user.image %>" width="30"><%= link_to curriculum.user.fname, curriculum.user %><br />
             Number of Videos: <%= curriculum.videos.length %>
           </div>
           <div class="col-md-5">
