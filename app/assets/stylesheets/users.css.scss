@@ -106,12 +106,12 @@ h2 {
 // curriculums display
 .curric-list-user {
     width: 70%;
-    margin-left: -36px;
+    margin: 0 auto;
 }
 
 div.curric-list-user {
     width: 750px;
-    height: 450px;
+
 }
 
 // .curric-list-user div.row {
@@ -142,4 +142,14 @@ div.col-md-5 {
 
 .subscribe_button {
 	display: block;
+}
+
+.subscription_list {
+	width: 740px;
+	margin: 0 auto;
+	background-color: green;
+}
+
+.subscription_list h2 {
+	text-align: center;
 }
