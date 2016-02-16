@@ -25,6 +25,8 @@ $(document).ready(function() {
       $('.video_description').val('');
       $('.video_order').val('');
       $('.video_thumbnail').val('');
+      $(".addvideoform").hide();
+      $(".addvideoform").removeClass("clicked_once");
     }, 1000)
     
 
