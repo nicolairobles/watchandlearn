@@ -28,7 +28,7 @@
 	width: 60%;
 }
 
-a{
+a {
 	color: black;
 }
 
@@ -47,7 +47,7 @@ h2 {
 }
 
 
-.user_button{
+.user_button {
 
 	-moz-box-shadow:inset 0px -3px 7px 0px #29313D;
 	-webkit-box-shadow:inset 0px -3px 7px 0px #29313D;
@@ -95,11 +95,40 @@ h2 {
 	color: black;
 }
 
-.curric-list div.row{
+.curric-list-user div.row {
 	border-radius: 0px;
 	background-color: #A1C6F5;
 	border: solid 2px white;
+	padding: 15px 10px 0 10px;
+  margin: 15px;
 }
+
+// curriculums display
+.curric-list-user {
+    width: 70%;
+    margin-left: -36px;
+}
+
+div.curric-list-user {
+    width: 750px;
+    height: 450px;
+}
+
+// .curric-list-user div.row {
+//     border: solid 2px black;
+//     padding: 15px 10px 0 10px;
+//     margin: 15px;
+// }
+
+.curric-list-user div.row img.thumbnail {
+    border: solid 1px grey;
+}
+
+div.col-md-5 {
+    text-align: left;
+}
+// other
+
 .email {
 	display: none;
 	float: right;

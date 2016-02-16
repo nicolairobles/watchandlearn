@@ -28,6 +28,28 @@
 @import 'votes';
 @import 'subscriptions';
 
+
+// jumbotron image
+.jumbotron{
+    background:  url(homepage.png);
+    background-size: cover; 
+    color: white;
+    height: 360px;
+    .container{
+        margin-left: 46px;
+    }
+    h1{
+        text-align: left;
+        font-size: 45px;
+        font-family: "Open Sans",Arial,Helvetica,sans-serif;
+        text-shadow: 2px 2px 10px #1F242D;
+    }
+    p{
+        font-family: "Open Sans",Arial,Helvetica,sans-serif;
+        text-shadow: 2px 2px 10px #1F242D;
+    }
+}
+
 .navbar{
     margin-bottom: 0;
     background-color: #29313D;

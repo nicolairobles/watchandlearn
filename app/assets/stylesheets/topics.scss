@@ -42,11 +42,18 @@ div.curric-list{
 }
 
 .curric-list div.row{
-    border: solid 2px black;
-    border-radius: 10px;
+    // border: solid 2px black;
+    // padding: 15px 10px 0 10px;
+    // margin: 15px;
+    border-radius: 0px;
+    background-color: #A1C6F5;
+    border: solid 2px white;
     padding: 15px 10px 0 10px;
     margin: 15px;
 }
+
+// .curric-list-user div.row {
+// }
 
 .curric-list div.row img.thumbnail{
     border: solid 1px grey;
