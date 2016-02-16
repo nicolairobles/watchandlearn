@@ -4,8 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :get_topics
+  before_filter :last_page
+
   def get_topics
     @topics = Topic.all
+  end
+
+  def last_page
+    session[:last_page] = request.env['HTTP_REFERER']
   end
 
   include SessionsHelper

@@ -3,13 +3,9 @@
   <p id="notice"><%= notice %></p>
 
   <div class="top">
+
     <h2><%= @user.fname %> <%= @user.lname %></h2>
-    <%= image_tag @user.image, class: 'style_image'  %>
-    
-    
-    <button class= "user_button" >Subscribe!</button>
-    <button class= "right_button contact right_button user_button" >Contact!</button>
-    <button class= "email user_button right_button" ><%= @user.email %></button>
+    <p class="style_image"><%= gravatar_for @user %></p>
   </div>
 
 <h2>Curriculums</h2>
@@ -19,51 +15,66 @@
   <% end %>
 <% end %>
 
+<div class="curric-list-user">
 <% @curriculums.each do |c| %>
   <% level = "beginner" if c.level == 1 %>
   <% level = "intermediate" if c.level == 2 %>
   <% level = "advanced" if c.level == 3 %>
-   <div class="curriculum">
 
-   <% if c.videos.length > 0 %>
-      <% @videos.order(:order).each do |v| %>
-          <% if v.curriculum_id == c.id %>
-            <% if v == c.videos.order(:order).first %>
-              Title: <a href="/videos/<%=v.id%>"><%=c.title.capitalize %></a><br/>
+
+      <div class="row">
+          <div class="col-md-2">
+          <!-- image of first video thumbnail -->
+            <img class="thumbnail" src="https://s.ytimg.com/yts/img/yt_1200-vfl4C3T0K.png" width="100">
+          </div>
+          <div class="col-md-5">
+          <% if c.videos.length > 0 %>
+              <% @videos.order(:order).each do |v| %>
+                  <% if v.curriculum_id == c.id %>
+                    <% if v == c.videos.order(:order).first %>
+                      Title: <a href="/videos/<%=v.id%>"><%=c.title.capitalize %></a><br/>
+                    <% end %>
+
+                <% end %>
+              <% end %>
+          <% else %>
+            <strong>Title:</strong> <%=c.title.capitalize%><br>
+            This Curriculum has no videos
+          <% end %>
+
+            <strong>Creator:</strong> <img src="<%= c.user.image %>" width="30"><%= c.user.fname %><br />
+            <strong>Number of Videos:</strong> <%= c.videos.length %><br />
+            <strong>Description:</strong> <%= c.description %><br />
+          </div>
+          <div class="col-md-5">
+            <strong>Number of Upvotes:</strong> <%= c.rating %><br />
+            <strong>Level:</strong> <%if c.level.to_i == 1 %> 
+            Beginner
+            <%elsif c.level.to_i == 2 %>
+            Intermediate
+            <%elsif c.level.to_i == 3 %>
+            Advanced
+            <%end %> 
+            <br /><br />
+            <% if @current_user %>
+              <% if @user.id == @current_user.id %>
+                <a href="/curriculums/<%= c.id %>/edit">Edit</a>
+              <% else %>
+                <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
+                <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
+                <button class= "user_button subscribe_button" >Subscribe!</button>
+              <% end %>
             <% end %>
-
-        <% end %>
-      <% end %>
-  <% else %>
-    Title: <%=c.title.capitalize%><br>
-    This Curriculum has no videos
-  <% end %>
-
-      <!-- <%= c.user_id %><%= @user.id%> --> 
-      <p><%=c.description%></p>
-      <p>Difficulty: <%= level.capitalize %></p>
-       </a>
-      <% if @current_user %>
-        <% if @user.id == @current_user.id %>
-          <a href="/curriculums/<%= c.id %>/edit">Edit</a>
-        <% else %>
-          <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
-          <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
-          <button class= "user_button subscribe_button" >Subscribe!</button>
-        <% end %>
-      <% end %>
-
-    </div>
- 
-
- 
+          </div>
+        </div>
 <% end %>
+</div>
 
 <% if @current_user %>
   <% if @current_user.id == @user.id %>
   <h2> Subscriptions </h2>
   <% @subscriptions.each do |s| %>
-    <% if s.user_id == @user.id %>
+  <% if s.user_id == @user.id %>
     <a href="/subscriptions/<%=s.id%>">
       <div class="curriculum">
         <h3><%= s.user_id%></h3>
@@ -71,12 +82,9 @@
         <p><%=s.curriculum_id%></p>
       </div>
     </a>
-    <% end %>
-
   <% end %>
   <% end %>
 <% end %>
+<% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
 </div>

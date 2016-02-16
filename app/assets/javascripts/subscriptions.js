@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 
 $('.subscribe_button').on('click', function() {
-
+      $(this).addClass("chosen")
       $.ajax({
             url: '/subscriptions',
             type: 'POST',  
@@ -15,8 +15,10 @@ $('.subscribe_button').on('click', function() {
                   console.log("you added a subscription ");
                   console.log($('.curric_id').val());
                   console.log($('.user_id').val());
-                  // console.log(result)
-                  // window.location.reload();
+
+                  setTimeout(function(){
+                  $('.chosen').text("You've subscribed!")
+                  }, 300)
 
             }
         })

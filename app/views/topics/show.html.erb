@@ -1,7 +1,7 @@
 <!-- Curriculum Table Display -->
 <p id="notice"><%= notice %></p>
 
-  <h1><%= @topic.name %> Curriculums
+  <h1 style="font-family:'Lora'; font-size: 35px; letter-spacing: 3px"><%= @topic.name.upcase %> CURRICULUMS
     <div class="level">
       
     <!-- Dropdowns to select "Level" -->
@@ -33,16 +33,14 @@
               <%elsif curriculum.level.to_i == 3 %> 
               class = "curriculum three <%= curriculum.topic.name %>"
           <%end%>>
-
-
         <div class="row">
           <div class="col-md-2">
           <!-- image of first video thumbnail -->
             <img class="thumbnail" src="https://s.ytimg.com/yts/img/yt_1200-vfl4C3T0K.png" width="100">
           </div>
           <div class="col-md-5">
-              
-              <% if curriculum.videos.length > 0 %>
+
+               <% if curriculum.videos.length > 0 %>
                 <% @videos.order(:order).each do |v| %>
                   <% if v.curriculum_id == curriculum.id %>
                       <% if v == curriculum.videos.sort_by {|i| i.order}.first %>
@@ -55,16 +53,23 @@
                 This Curriculum has no videos
               <% end %>
             Maker: <img src="<%= curriculum.user.image %>" width="30"><%= link_to curriculum.user.fname, curriculum.user %><br />
-            Number of Videos: <%= curriculum.videos.length %>
+            <strong>Number of Videos:</strong> <%= curriculum.videos.length %><br />
+            <strong>Description:</strong> <%= curriculum.description %>
+
           </div>
           <div class="col-md-5">
-            Number of Upvotes: <%= curriculum.rating %><br />
-            Level: <%= curriculum.level %><br />
+            <strong>Number of Upvotes:</strong> <%= curriculum.rating %><br />
+            <strong>Level:</strong> <%if curriculum.level.to_i == 1 %> 
+            Beginner
+            <%elsif curriculum.level.to_i == 2 %>
+            Intermediate
+            <%elsif curriculum.level.to_i == 3 %>
+            Advanced
+            <%end %> 
+            <br />
           </div>
         </div>
         
       </div>
     <% end %>
   </div>
-
-</table>

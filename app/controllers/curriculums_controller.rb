@@ -42,7 +42,7 @@ class CurriculumsController < ApplicationController
     @current_user ||= User.find_by(id: session[:user_id])
     respond_to do |format|
       if @curriculum.save
-        format.html { redirect_to @curriculum, notice: 'Curriculum was successfully created.' }
+        format.html { redirect_to edit_curriculum_path(@curriculum), notice: 'Curriculum was successfully created.' }
         format.json { render :show, status: :created, location: @curriculum }
       else
         format.html { render :new }

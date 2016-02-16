@@ -28,7 +28,7 @@
 	width: 60%;
 }
 
-a{
+a {
 	color: black;
 }
 
@@ -47,14 +47,13 @@ h2 {
 }
 
 
-.user_button{
+.user_button {
 
-	-moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
-	-webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
-	box-shadow:inset 0px -3px 7px 0px #29bbff;	
-	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	-moz-box-shadow:inset 0px -3px 7px 0px #29313D;
+	-webkit-box-shadow:inset 0px -3px 7px 0px #29313D;
+	box-shadow:inset 0px -3px 7px 0px #29313D;	
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2dabf9', endColorstr='#0688fa',GradientType=0);
-	background-color:#2dabf9;
+	background-color:#29313D;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
@@ -72,9 +71,8 @@ h2 {
 }
 .user_button:hover {
 
-	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0688fa', endColorstr='#2dabf9',GradientType=0);
-	background-color:#0688fa;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#29313D', endColorstr='#2dabf9',GradientType=0);
+	background-color:#29313D;
 }
 .user_button:active {
 	position:relative;
@@ -86,23 +84,50 @@ h2 {
 	display: inline-block;
 }
 
-.curriculum {
-	padding-left: 10px;
-	padding-top: 10px;
-	padding-bottom: 20px;
-	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-	border-radius: 38px;
-	margin-bottom: 20px;
-	
+.created_curriculum {
 	color: black;
 	text-align: center;
-	border: 1px solid black;
+	background-color: #A1C6F5;
+	border: solid 2px white;
+	
 }
-.curriculum:hover {
-	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-	color: white;
-	box-shadow: -5px 5px 5px 0px;
+.created_curriculum:hover {
+	color: black;
 }
+
+.curric-list-user div.row {
+	border-radius: 0px;
+	background-color: #A1C6F5;
+	border: solid 2px white;
+	padding: 15px 10px 0 10px;
+  margin: 15px;
+}
+
+// curriculums display
+.curric-list-user {
+    width: 70%;
+    margin-left: -36px;
+}
+
+div.curric-list-user {
+    width: 750px;
+    height: 450px;
+}
+
+// .curric-list-user div.row {
+//     border: solid 2px black;
+//     padding: 15px 10px 0 10px;
+//     margin: 15px;
+// }
+
+.curric-list-user div.row img.thumbnail {
+    border: solid 1px grey;
+}
+
+div.col-md-5 {
+    text-align: left;
+}
+// other
 
 .email {
 	display: none;
@@ -117,4 +142,13 @@ h2 {
 
 .subscribe_button {
 	display: block;
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.name {
+	width: 100%;
 }
