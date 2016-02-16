@@ -34,6 +34,7 @@
     color: #EFE979;
 }
 
+<<<<<<< HEAD
 // text color for topics, profile, and logout
 .navbar-default .navbar-nav > li > a,
 .navbar-default .navbar-nav > li > a:hover, 
@@ -49,6 +50,13 @@
 }
 
 
+=======
+.back{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+>>>>>>> 067c7cb94f9f9a4a2c36272ff3e171dac4cffde4
 #logo{
     width: 60px;
     background: url(logo.png);

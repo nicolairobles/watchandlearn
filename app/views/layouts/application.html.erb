@@ -50,8 +50,12 @@
 </nav>
 
 <%= yield %>
-
+<div class="back">
+  <%= button_to "< Back", session[:last_page], 
+      :class => "user_button", :method => :get %>
+</div>
 <footer>
+
 </footer>
 
 </body>
