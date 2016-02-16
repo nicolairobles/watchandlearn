@@ -24,6 +24,7 @@ class CurriculumsController < ApplicationController
   # GET /curriculums/new
   def new
     @curriculum = Curriculum.new
+    @topics = Topic.all
   end
 
   # GET /curriculums/1/edit
