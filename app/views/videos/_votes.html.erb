@@ -6,15 +6,12 @@
 <!-- if there is a vote for this user they must edit their vote-->
      <% @votes.each_with_index do |vote, index| %>
         <% if vote == @votes.last %>
-          <p> the last one </p>
           <!-- do nothing -->
         <% else  %>
           <% vote.destroy %>
         <% end %>
   <% end %>
   <% @votes.each_with_index do |vote, index| %>
-          <p> your vote : <%= vote.value %></p>
-          <p> <%= index %> </p>
           <!-- if they voted up, they can only vote down -->
             <% if vote.value == 1 %>
               <button class="vote_button vote_up" value ="0" style="color: blue">+1</button>

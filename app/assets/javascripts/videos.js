@@ -5,7 +5,13 @@ $(document).ready(function() {
 
 	$('.right_button').on("click", function() {
 	console.log("contact clicked");
-		$('.right_button').hide();
-		$('.email').show();
+
+		if ($(this).hasClass('email')) {
+			$('.contact').show();
+			$('.email').hide();
+		} else {
+			$('.contact').hide();
+			$('.email').show();
+	}
 	})
 })
