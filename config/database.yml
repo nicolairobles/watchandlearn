@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: yoututorial_production
-  username: yoututorial
-  password: <%= ENV['YOUTUTORIAL_DATABASE_PASSWORD'] %>
+  database: <%= ENV['YOUTUTORIAL_DB'] %>
+  username: <%= ENV['YOUTUTORIAL_USER'] %>
+  password: <%= ENV['YOUTUTORIAL_PASSWORD'] %>
+  host: <%= ENV['YOUTUTORIAL_HOST'] %>
