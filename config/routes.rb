@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :curriculums do
-    resources :videos, :except => [:update, :destroy]
+    resources :videos, :except => [:update, :destroy], controller: "curriculums/videos"
   end 
 
  end

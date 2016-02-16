@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :video do
     urlID { Faker::Avatar.image }
     thumbnail { Faker::Avatar.image }
-    order { a.pop }
+    position { a.pop }
     description { Faker::Hipster.sentence }
     title { Faker::Hipster.sentence }
     curriculum_id { rand(2..10) }

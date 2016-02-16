@@ -35,11 +35,11 @@
 <strong>Videos:</strong>
       <!-- counter checks for first video -->
   <% counter = 0 %>
-  <% @videos.order(:order).each do |v| %>
+  <% @videos.order(:position).each do |v| %>
     <div class="videolist">
         <!-- first video -->
         <% if counter == 0 %>
-          <p><%= v.order %>
+          <p><%= v.position %>
           <%= v.title %></p>
           <% v.urlID = v.urlID.split("=")[1] %>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
@@ -53,14 +53,14 @@
 <!-- this div shows all other than first video -->
 <div>
   <% counter = 0 %>
-  <% @videos.order(:order).each do |v| %>
+  <% @videos.order(:position).each do |v| %>
     <% if counter != 0 %>
       <p>
-        <%= v.order %>
+        <%= v.position %>
         <a href="/videos/<%= v.id %>" style="color : black"><%= v.title %></a>
       </p>
     <% else %>
-      <%= v.order %>
+      <%= v.position %>
       <a href="/videos/<%= v.id %>" style="color : red"><%= v.title %></a>
       <% end %>
   <% counter += 1 %>

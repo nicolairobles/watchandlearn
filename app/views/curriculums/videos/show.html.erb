@@ -17,7 +17,7 @@
 
 <p>
   <strong>Order:</strong>
-  <%= @video.order %>
+  <%= @video.position %>
 </p>
 
 <% if current_user %>
@@ -53,11 +53,11 @@
 
 
   <% counter = 0 %>
-  <% @videos.order(:order).each do |v| %>
+  <% @videos.order(:position).each do |v| %>
     <div class="videolist">
         <!-- first video -->
         <% if v.id == @video.id %>
-            <p><%= v.order %>
+            <p><%= v.position %>
             <%= v.title %></p>
             <% v.urlID = v.urlID.split("=")[1] %>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
@@ -76,7 +76,7 @@
     <h2> Curriculum: <%= c.title.capitalize %></h2>
    <% end %>
    <%end %>
-  <% @videos.order(:order).each do |v| %>
+  <% @videos.order(:position).each do |v| %>
 
       <% if v.curriculum_id == @video.curriculum_id %>
       <p>

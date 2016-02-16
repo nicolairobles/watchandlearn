@@ -1,4 +1,4 @@
-class VideosController < ApplicationController
+class Curriculums::VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   before_action :require_user, only: [:new, :edit, :create, :update, :destroy]
 
@@ -85,6 +85,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:urlID, :thumbnail, :order, :description, :title, :curriculum_id)
+      params.require(:video).permit(:urlID, :thumbnail, :position, :description, :title, :curriculum_id)
     end
 end

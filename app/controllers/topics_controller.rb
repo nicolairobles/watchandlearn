@@ -19,7 +19,6 @@ class TopicsController < ApplicationController
       curriculum.update(rating: @rating)
     end
     @curriculums = @curriculums.order(rating: :desc)
-    
   end
 
   # GET /topics/new
