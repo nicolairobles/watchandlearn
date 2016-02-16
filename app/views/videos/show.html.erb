@@ -4,52 +4,15 @@
 <div class = "iframe">
 <p>
 
- user:<%= current_user.id if current_user %>
-  <strong>Urlid:</strong>
-   <%= @video.urlID %>
-</p>
-
-
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @video.thumbnail %>
-</p>
-
-<p>
-  <strong>Order:</strong>
-  <%= @video.order %>
-</p>
-
-<% if current_user %>
-<p>
-  <input type="hidden" name="curric" value=<%= @video.curriculum_id %> class="curric">
-  <input type="hidden" name="video" value=<%= @video.id %> class="video">
-  <input type="hidden" name="user" value=<%= current_user.id %> class="user">
-</p>
-
-  <strong>Votes:</strong>
-
-<div class='votes'>
-<%= render partial: 'votes' %>
-</div>
-<% end %>
 
 
 
-<p>
-  <strong>Description:</strong>
-  <%= @video.description %>
-</p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
-</p>
 
-<p>
-  <strong>Curriculum:</strong>
-  <%= @video.curriculum_id %>
-</p>
+
+
+
+
 
 
   <% counter = 0 %>
@@ -57,17 +20,32 @@
     <div class="videolist">
         <!-- first video -->
         <% if v.id == @video.id %>
-            <p><%= v.order %>
-            <%= v.title %></p>
+            
             <% v.urlID = v.urlID.split("=")[1] %>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= v.urlID %>" frameborder="0" allowfullscreen>
-            </iframe>
+            </iframe><br>
+            <%= v.title %></p>
+            <%= v.description %>
         <% end %>
         <% counter += 1 %>
     </div>
   <% end %>
+   <strong>Votes:</strong>
+
+<div class='votes'>
+<%= render partial: 'votes' %>
+<% if current_user %>
+<p>
+  <input type="hidden" name="curric" value=<%= @video.curriculum_id %> class="curric">
+  <input type="hidden" name="video" value=<%= @video.id %> class="video">
+  <input type="hidden" name="user" value=<%= current_user.id %> class="user">
+</p>
 </div>
-<p style="clear: both"></p>
+</div>
+<p style="clear: both"></p> 
+
+
+<% end %>
 
 <div id = "sidebar">
   <% counter = 0 %>
@@ -94,9 +72,7 @@
     
       <% counter += 1 %>
   <% end %>
-  <%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+
 </div>
-
-
+<a href="/topics"><button class="user_button back_to_currics">Back to all Curriculums</button></a>
 </div>
