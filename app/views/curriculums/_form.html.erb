@@ -27,8 +27,8 @@
     <%= f.hidden_field :user_id, :value => @current_user.id %>
   </div>
   <div class="field">
-    <%= f.label :topic %><br>
-    <%= f.collection_select :topic, @topics, :id, :name, include_blank: false %>
+    <%= f.label :topic_id %><br>
+    <%= f.collection_select :topic_id, @topics, :id, :name, include_blank: false %>
   </div>
         
   <div class="submit_new_curric">
