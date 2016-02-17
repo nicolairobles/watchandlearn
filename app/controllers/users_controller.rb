@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @curriculums = Curriculum.where(user_id: params[:id])
+    @allcurriculums = Curriculum.all
     @user_id = User.where(id: params[:id])
      @current_user ||= User.find_by(id: session[:user_id])
      @subscriptions = Subscription.all
