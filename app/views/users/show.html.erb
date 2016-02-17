@@ -22,6 +22,8 @@
       <% level = "beginner" if c.level == 1 %>
       <% level = "intermediate" if c.level == 2 %>
       <% level = "advanced" if c.level == 3 %>
+      
+
 
           <div class="row">
               <div class="col-md-2">
@@ -37,10 +39,12 @@
                           <% end %>
                         <% end %>
                     <% end %>
+
                 <% else %>
                   Title: <%=c.title.capitalize%><br>
                   This Curriculum has no videos
                 <% end %>
+
 
                 <strong>Creator:</strong> <img src="<%= c.user.image %>" width="30"><%= c.user.fname %><br />
                 <strong>Number of Videos:</strong> <%= c.videos.length %><br />
@@ -48,7 +52,9 @@
               </div>
               <div class="col-md-5">
                 <strong>Number of Upvotes:</strong> <%= c.rating %><br />
-                <strong>Level:</strong> <%if c.level.to_i == 1 %> 
+                <strong>Level:</strong> 
+
+                <%if c.level.to_i == 1 %> 
                 Beginner
                 <%elsif c.level.to_i == 2 %>
                 Intermediate
@@ -56,30 +62,35 @@
                 Advanced
                 <%end %> 
                 <br /><br />
-                <% if @current_user %>
-                  <% if @user.id == @current_user.id %>
-                    <a href="/curriculums/<%= c.id %>/edit">Edit</a>
-                  <% else %>
-                    <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
-                    <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
-                    <button class= "user_button subscribe_button" >Subscribe!</button>
+                  <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
+                  <input type="hidden" name="curric_id" value=<%=c.id%> class="curriculum_id">
+                  <button class= "user_button subscribe_button" >Subscribe!</button>
+                  <% if @current_user %>
+                    <% if @user.id == @current_user.id %>
+                     <a href="/curriculums/<%= c.id %>/edit">Edit</a>
+                    <% else %>
+                    <% end %>
                   <% end %>
-                <% end %>
               </div>
             </div>
     <% end %>
   </div>
-
-  <% if @current_user %>
+<% if @current_user %>
     <% if @current_user.id == @user.id %>
       <h2> Subscriptions </h2>
       <div class="curric-list-user">
         <% @subscriptions.each do |s| %>
+
           <% if s.user_id == @user.id %>
+
             <% @allcurriculums.each do |c| %>
+
               <% if c.id == s.curriculum_id %>
+
                 <% @videos.each do |v| %>
+
                   <% if v.curriculum_id == c.id %>
+
                     <% if v == c.videos.order(:order).first %>
 
                       <div class='row'>
@@ -92,7 +103,7 @@
                            <% if c.videos.length > 0 %>
                               Title: <a href="/videos/<%=v.id%>"><%=c.title.capitalize %></a><br/>
                             <% else %>
-                              Title: <%=c.title.capitalize%><br>
+                              Title: <%=c.title.capitalize%> <br>
                               This Curriculum has no videos
                             <% end %>
                             <strong>Creator:</strong> <img src="<%= c.user.image %>" width="30"><%= c.user.fname %><br />
@@ -112,10 +123,10 @@
                               <br /><br />
                               <% if @current_user %>
                                 <% if @user.id == @current_user.id %>
-                                  <a href="/curriculums/<%= c.id %>/edit">Edit</a>
+                               
                                 <% else %>
                                   <input type="hidden" name="user_id" value=<%=@current_user.id%> class="user_id">
-                                  <input type="hidden" name="curric_id" value=<%=c.id%> class="curric_id">
+                                  <input type="hidden" name="curriculum_id" value=<%=c.id%> class="curriculum_id">
                                   <button class= "user_button subscribe_button" >Subscribe!</button>
                                 <% end %>
                               <% end %>
@@ -133,5 +144,6 @@
       </div>
     <% end %>
   <% end %>
+  
 
 </div>
